@@ -1,0 +1,1596 @@
+generator client {
+  provider            = "prisma-client"
+  output              = "../src/generated/prisma"
+  importFileExtension = "ts"
+}
+
+datasource db {
+  provider     = "postgresql"
+  relationMode = "prisma"
+}
+
+model Bounties {
+  id                 String             @id @default(uuid())
+  title              String
+  slug               String             @unique
+  description        String?            @db.Text
+  deadline           DateTime?
+  commitmentDate     DateTime? @map("commitmentdate")
+  eligibility        Json?
+  status             status             @default(OPEN)
+  token              String?
+  rewardAmount       Float? @map("rewardamount")
+  rewards            Json?
+  maxBonusSpots      Int                @default(0) @map("maxbonusspots")
+  usdValue           Float? @map("usdvalue")
+  tokenUsdAtPublish  Float? @map("tokenusdatpublish")
+  sponsorId          String @map("sponsorid")
+  pocId              String @map("pocid")
+  source             Source             @default(NATIVE)
+  isPublished        Boolean            @default(false) @map("ispublished")
+  isFeatured         Boolean            @default(false) @map("isfeatured")
+  isActive           Boolean            @default(true) @map("isactive")
+  isArchived         Boolean            @default(false) @map("isarchived")
+  createdAt          DateTime           @default(now()) @map("createdat")
+  updatedAt          DateTime           @updatedAt @map("updatedat")
+  applicationLink    String? @map("applicationlink")
+  skills             Json?
+  type               BountyType         @default(bounty)
+  requirements       String?            @db.Text
+  isWinnersAnnounced Boolean            @default(false) @map("iswinnersannounced")
+  templateId         String? @map("templateid")
+  region             String             @default("Global")
+  pocSocials         String? @map("pocsocials")
+  hackathonprize     Boolean            @default(false)
+  applicationType    ApplicationType    @default(fixed) @map("applicationtype")
+  timeToComplete     String? @map("timetocomplete")
+  references         Json?
+  referredBy         String? @map("referredby")
+  publishedAt        DateTime? @map("publishedat")
+  isPrivate          Boolean            @default(false) @map("isprivate")
+  agentAccess        AgentAccess        @default(HUMAN_ONLY) @map("agentaccess")
+  hackathonId        String? @map("hackathonid")
+  compensationType   CompensationType   @default(fixed) @map("compensationtype")
+  maxRewardAsk       Float? @map("maxrewardask")
+  minRewardAsk       Float? @map("minrewardask")
+  template           BountiesTemplates? @relation(fields: [templateId], references: [id])
+  sponsor            Sponsors           @relation(fields: [sponsorId], references: [id])
+  poc                User               @relation("poc", fields: [pocId], references: [id])
+  language           String?
+  shouldSendEmail    Boolean            @default(true) @map("shouldsendemail")
+  isFndnPaying       Boolean            @default(false) @map("isfndnpaying")
+  Submission         Submission[]
+  SubscribeBounty    SubscribeBounty[]
+  Hackathon          Hackathon?         @relation(fields: [hackathonId], references: [id])
+  winnersAnnouncedAt DateTime? @map("winnersannouncedat")
+  Scouts             Scouts[]
+  Comments           Comment[]
+  discordMessageIds  Json? @map("discordmessageids")
+  telegramMessageIds Json? @map("telegrammessageids")
+  ai                 Json?
+  publishedBy        String? @map("publishedby")
+  XWeeklyThread      String? @map("xweeklythread")
+  XStandalonePost    String? @map("xstandalonepost")
+  isPro              Boolean            @default(false) @map("ispro")
+
+  @@index([id, slug])
+  @@index([pocId])
+  @@index([templateId])
+  @@index([hackathonId])
+  @@index([isPublished, isPrivate])
+  @@index([deadline, updatedAt])
+  @@index([title])
+  @@index([deadline(sort: Asc)], map: "Bounties_deadline_asc_idx")
+  @@index([deadline(sort: Desc)], map: "Bounties_deadline_desc_idx")
+  @@index([winnersAnnouncedAt(sort: Desc)])
+  @@index([isFeatured(sort: Desc)])
+  @@index([isPublished, isActive, isArchived, status])
+  @@index([isPublished, isActive, isArchived, isPrivate, status])
+  @@index([sponsorId, isArchived, isPublished, isActive])
+  @@index([isPublished, isActive, isPrivate, hackathonprize])
+  @@index([compensationType, usdValue])
+  @@index([compensationType, maxRewardAsk])
+  @@index([isWinnersAnnounced, isPublished, status])
+  @@index([region, isPublished, status])
+  @@index([isPublished, isActive, isArchived, isPrivate, type])
+  @@index([deadline, isWinnersAnnounced])
+  @@index([usdValue, maxRewardAsk])
+  @@index([region, isPublished, isActive])
+  @@index([sponsorId, isPublished, isActive])
+  @@index([isFeatured, deadline])
+  @@index([createdAt, isPublished])
+  @@index([winnersAnnouncedAt, isWinnersAnnounced])
+  @@index([language, compensationType])
+  @@index([type, isPublished, isActive, isArchived])
+  @@index([isPublished, isActive, isArchived, isPrivate, hackathonprize, type])
+  @@index([region, type, isPublished, isActive])
+  @@index([deadline, isWinnersAnnounced, type])
+  @@index([isWinnersAnnounced, isPrivate, type])
+  @@map("bounties")
+}
+
+model BountiesTemplates {
+  id               String           @id @default(uuid())
+  title            String?
+  deadline         DateTime?
+  slug             String?
+  description      String?          @db.Text
+  color            String?
+  emoji            String?
+  isFeatured       Boolean          @default(false) @map("isfeatured")
+  isActive         Boolean          @default(true) @map("isactive")
+  isArchived       Boolean          @default(false) @map("isarchived")
+  createdAt        DateTime         @default(now()) @map("createdat")
+  updatedAt        DateTime         @updatedAt @map("updatedat")
+  skills           Json?
+  type             BountyType       @default(bounty)
+  requirements     String?          @db.Text
+  region           String           @default("Global")
+  applicationType  ApplicationType  @default(fixed) @map("applicationtype")
+  status           status           @default(OPEN)
+  token            String?
+  references       Json?
+  referredBy       String? @map("referredby")
+  publishedAt      DateTime? @map("publishedat")
+  compensationType CompensationType @default(fixed) @map("compensationtype")
+  maxRewardAsk     Float? @map("maxrewardask")
+  minRewardAsk     Float? @map("minrewardask")
+  language         String?
+  rewardAmount     Float? @map("rewardamount")
+  rewards          Json?
+  maxBonusSpots    Int              @default(0) @map("maxbonusspots")
+  usdValue         Float? @map("usdvalue")
+  sponsorId        String @map("sponsorid")
+  pocId            String @map("pocid")
+  pocSocials       String? @map("pocsocials")
+  source           Source           @default(NATIVE)
+  isPublished      Boolean          @default(false) @map("ispublished")
+  Bounties         Bounties[]
+  sponsor          Sponsors         @relation(fields: [sponsorId], references: [id])
+  poc              User             @relation("poc", fields: [pocId], references: [id])
+
+  @@index([isActive, isArchived, type])
+  @@index([pocId])
+  @@index([sponsorId])
+  @@index([type])
+  @@map("bountiestemplates")
+}
+
+model TokenMetadata {
+  id                  String   @id @default(uuid())
+  tokenName           String   @db.VarChar(191) @map("tokenname")
+  tokenSymbol         String   @unique @db.VarChar(64) @map("tokensymbol")
+  mintAddress         String   @unique @db.VarChar(191) @map("mintaddress")
+  icon                String   @db.VarChar(2048)
+  decimals            Int
+  sortOrder           Int      @default(0) @map("sortorder")
+  isActive            Boolean  @default(true) @map("isactive")
+  isVerifiedOnJupiter Boolean  @default(true) @map("isverifiedonjupiter")
+  createdAt           DateTime @default(now()) @map("createdat")
+  updatedAt           DateTime @updatedAt @map("updatedat")
+
+  @@index([isActive, sortOrder])
+  @@index([sortOrder])
+  @@map("tokenmetadata")
+}
+
+model Comment {
+  id               String            @id @default(uuid())
+  message          String            @db.VarChar(5000)
+  authorId         String @map("authorid")
+  refType          CommentRefType    @default(BOUNTY) @map("reftype")
+  refId            String @map("refid")
+  isActive         Boolean           @default(true) @map("isactive")
+  isArchived       Boolean           @default(false) @map("isarchived")
+  isPinned         Boolean           @default(false) @map("ispinned")
+  createdAt        DateTime          @default(now()) @map("createdat")
+  updatedAt        DateTime          @updatedAt @map("updatedat")
+  replyToId        String? @map("replytoid")
+  submissionId     String? @map("submissionid")
+  type             CommentType       @default(NORMAL)
+  author           User              @relation(fields: [authorId], references: [id])
+  repliedTo        Comment?          @relation("CommentReplies", fields: [replyToId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  replies          Comment[]         @relation("CommentReplies")
+  listing          Bounties?         @relation(fields: [refId], references: [id], map: "Comment_Listing_fkey")
+  submission       Submission?       @relation(fields: [refId], references: [id], map: "Comment_Submission_fkey")
+  pow              PoW?              @relation(fields: [refId], references: [id], map: "Comment_PoW_fkey")
+  GrantApplication GrantApplication? @relation(fields: [refId], references: [id], map: "Comment_GrantApplication_fkey")
+
+  @@index([id, refId])
+  @@index([authorId])
+  @@index([replyToId])
+  @@index([refId, isActive, isArchived, type])
+  @@index([refId, isActive, isArchived, replyToId])
+  @@index([refType, type])
+  @@index([updatedAt(sort: Desc)])
+  @@index([refId, isPinned])
+  @@map("comment")
+}
+
+model Grants {
+  id                     String             @id @default(uuid())
+  title                  String
+  slug                   String             @unique
+  description            String?            @db.Text
+  shortDescription       String?            @db.VarChar(1000) @map("shortdescription")
+  token                  String?
+  minReward              Float? @map("minreward")
+  maxReward              Float? @map("maxreward")
+  totalPaid              Float              @default(0) @map("totalpaid")
+  historicalApplications Int                @default(0) @map("historicalapplications")
+  link                   String?
+  sponsorId              String @map("sponsorid")
+  pocId                  String @map("pocid")
+  isPublished            Boolean            @default(false) @map("ispublished")
+  isFeatured             Boolean            @default(false) @map("isfeatured")
+  isActive               Boolean            @default(true) @map("isactive")
+  isArchived             Boolean            @default(false) @map("isarchived")
+  isPaused               Boolean            @default(false) @map("ispaused")
+  createdAt              DateTime           @default(now()) @map("createdat")
+  updatedAt              DateTime           @updatedAt @map("updatedat")
+  skills                 Json?
+  logo                   String?
+  region                 String             @default("Global")
+  sponsor                Sponsors           @relation(fields: [sponsorId], references: [id])
+  poc                    User               @relation(fields: [pocId], references: [id])
+  questions              Json?
+  pocSocials             String? @map("pocsocials")
+  status                 GrantStatus        @default(OPEN)
+  GrantApplication       GrantApplication[]
+  airtableId             String? @map("airtableid")
+  avgResponseTime        String?            @default("24h") @map("avgresponsetime")
+  isNative               Boolean            @default(false) @map("isnative")
+  isPrivate              Boolean            @default(false) @map("isprivate")
+  references             Json?
+  ai                     Json?
+  GrantTranche           GrantTranche[]
+  approverRecordId       String? @map("approverrecordid")
+  emailSender            String? @map("emailsender")
+  replyToEmail           String? @map("replytoemail")
+  emailSalutation        String? @map("emailsalutation")
+  isPro                  Boolean            @default(false) @map("ispro")
+  isST                   Boolean            @default(false) @map("isst")
+
+  @@index([id, slug])
+  @@index([pocId])
+  @@index([isPublished, isActive, isArchived, status])
+  @@index([region, isPublished, isActive])
+  @@index([slug])
+  @@index([sponsorId, isActive, isArchived, status])
+  @@index([createdAt(sort: Desc)])
+  @@index([isPublished, isActive, isArchived, isPrivate, status])
+  @@index([region, isPublished, isActive, isArchived])
+  @@index([sponsorId, isPublished, isActive, isArchived])
+  @@index([isFeatured, createdAt])
+  @@index([status, isPublished, isActive])
+  @@index([region, status, isPublished])
+  @@index([minReward, maxReward])
+  @@map("grants")
+}
+
+model GrantApplication {
+  id                  String                 @id @default(uuid())
+  userId              String @map("userid")
+  grantId             String @map("grantid")
+  applicationStatus   GrantApplicationStatus @default(Pending) @map("applicationstatus")
+  projectTitle        String @map("projecttitle")
+  projectOneLiner     String @map("projectoneliner")
+  projectDetails      String                 @db.Text @map("projectdetails")
+  projectTimeline     String @map("projecttimeline")
+  proofOfWork         String                 @db.Text @map("proofofwork")
+  walletAddress       String @map("walletaddress")
+  twitter             String?
+  github              String?
+  milestones          String?                @db.Text
+  kpi                 String?                @db.Text
+  answers             Json?                  @default("[]")
+  createdAt           DateTime               @default(now()) @map("createdat")
+  updatedAt           DateTime               @updatedAt @map("updatedat")
+  user                User                   @relation(fields: [userId], references: [id])
+  grant               Grants                 @relation(fields: [grantId], references: [id])
+  label               SubmissionLabels       @default(Pending)
+  ask                 Float                  @default(0)
+  approvedAmount      Float                  @default(0) @map("approvedamount")
+  approvedAmountInUSD Float                  @default(0) @map("approvedamountinusd")
+  decidedAt           DateTime? @map("decidedat")
+  isCooldownSkipped   Boolean                @default(false) @map("iscooldownskipped")
+  totalPaid           Float                  @default(0) @map("totalpaid")
+  isShipped           Boolean                @default(false) @map("isshipped")
+  paymentDetails      Json? @map("paymentdetails")
+  totalTranches       Int                    @default(0) @map("totaltranches")
+  like                Json?
+  likeCount           Int                    @default(0) @map("likecount")
+  Comments            Comment[]
+  decidedBy           String? @map("decidedby")
+  notes               String?                @db.Text
+  ai                  Json?
+  GrantTranche        GrantTranche[]
+  CreditLedger        CreditLedger[]
+  lumaLink            String? @map("lumalink")
+  expenseBreakdown    String?                @db.Text @map("expensebreakdown")
+
+  @@index([likeCount])
+  @@index([grantId, userId, applicationStatus])
+  @@index([applicationStatus, decidedAt])
+  @@index([applicationStatus, createdAt])
+  @@index([userId, grantId, createdAt])
+  @@index([decidedAt(sort: Desc)])
+  @@index([createdAt(sort: Desc)])
+  @@index([approvedAmountInUSD(sort: Desc)])
+  @@map("grantapplication")
+}
+
+model GrantTranche {
+  id               String             @id @default(uuid())
+  applicationId    String @map("applicationid")
+  grantId          String @map("grantid")
+  ask              Float
+  walletAddress    String? @map("walletaddress")
+  update           String?            @db.Text
+  helpWanted       String?            @db.Text @map("helpwanted")
+  status           GrantTrancheStatus @default(Pending)
+  createdAt        DateTime           @default(now()) @map("createdat")
+  updatedAt        DateTime           @updatedAt @map("updatedat")
+  GrantApplication GrantApplication   @relation(fields: [applicationId], references: [id])
+  Grant            Grants             @relation(fields: [grantId], references: [id])
+  approvedAmount   Float? @map("approvedamount")
+  decidedAt        DateTime? @map("decidedat")
+  paidAt           DateTime? @map("paidat")
+  trancheNumber    Int @map("tranchenumber")
+  eventPictures    Json? @map("eventpictures")
+  eventReceipts    Json? @map("eventreceipts")
+  attendeeCount    Int? @map("attendeecount")
+  socialPost       String?            @db.VarChar(500) @map("socialpost")
+  colosseumLink    String?            @db.VarChar(500) @map("colosseumlink")
+  githubRepo       String?            @db.VarChar(500) @map("githubrepo")
+  aiReceipts       Json? @map("aireceipts")
+
+  @@index([applicationId])
+  @@index([grantId])
+  @@map("granttranche")
+}
+
+model Submission {
+  id                 String           @id @default(uuid())
+  link               String?          @db.VarChar(500)
+  tweet              String?          @db.VarChar(500)
+  status             SubmissionStatus @default(Pending)
+  eligibilityAnswers Json?            @default("[]") @map("eligibilityanswers")
+  userId             String @map("userid")
+  agentId            String? @map("agentid")
+  listingId          String @map("listingid")
+  isWinner           Boolean          @default(false) @map("iswinner")
+  winnerPosition     Int? @map("winnerposition")
+  isActive           Boolean          @default(true) @map("isactive")
+  isArchived         Boolean          @default(false) @map("isarchived")
+  createdAt          DateTime         @default(now()) @map("createdat")
+  updatedAt          DateTime         @updatedAt @map("updatedat")
+  like               Json?
+  likeCount          Int              @default(0) @map("likecount")
+  isPaid             Boolean          @default(false) @map("ispaid")
+  paymentDetails     Json? @map("paymentdetails")
+  otherInfo          String?          @db.Text @map("otherinfo")
+  ask                Float?
+  telegram           String?          @db.Text
+  label              SubmissionLabels @default(Unreviewed)
+  rewardInUSD        Float            @default(0) @map("rewardinusd")
+  listing            Bounties         @relation(fields: [listingId], references: [id])
+  user               User             @relation(fields: [userId], references: [id])
+  agent              Agent?           @relation(fields: [agentId], references: [id])
+  ogImage            String?          @db.Text @map("ogimage")
+  notes              String?          @db.VarChar(10000)
+  Comments           Comment[]
+  CreditLedger       CreditLedger[]
+  ai                 Json?
+  paymentSynced      Boolean          @default(false) @map("paymentsynced")
+
+  @@index([id, listingId])
+  @@index([isWinner])
+  @@index([createdAt, isWinner])
+  @@index([createdAt, listingId])
+  @@index([likeCount])
+  @@index([listingId, isActive, isArchived])
+  @@index([listingId, userId, isActive, isArchived])
+  @@index([listingId, isWinner, isActive, isArchived])
+  @@index([userId, listingId, createdAt])
+  @@index([userId, isWinner])
+  @@index([userId, isWinner, isActive, isArchived])
+  @@index([createdAt(sort: Desc)])
+  @@index([likeCount(sort: Desc), createdAt(sort: Desc)])
+  @@index([agentId])
+  @@map("submission")
+}
+
+model Sponsors {
+  id               String              @id @default(uuid())
+  name             String              @unique
+  slug             String              @unique
+  logo             String?
+  url              String?
+  industry         String
+  twitter          String?
+  bio              String?
+  createdAt        DateTime            @default(now()) @map("createdat")
+  updatedAt        DateTime            @updatedAt @map("updatedat")
+  isArchived       Boolean             @default(false) @map("isarchived")
+  isActive         Boolean             @default(true) @map("isactive")
+  entityName       String? @map("entityname")
+  isVerified       Boolean             @default(false) @map("isverified")
+  isCaution        Boolean             @default(false) @map("iscaution")
+  verificationInfo Json? @map("verificationinfo")
+  Hackathon        Hackathon?
+  UserSponsors     UserSponsors[]
+  Bounties         Bounties[]
+  Templates        BountiesTemplates[]
+  Grants           Grants[]
+  User             User[]
+  UserInvites      UserInvites[]
+  chapter          Chapter?
+
+  @@index([id, slug])
+  @@index([isVerified])
+  @@index([isCaution, isVerified])
+  @@index([isActive, isArchived])
+  @@map("sponsors")
+}
+
+model User {
+  id                 String               @id @default(uuid())
+  publicKey          String? @map("publickey")
+  walletAddress      String? @map("walletaddress")
+  email              String               @unique
+  username           String?              @unique
+  photo              String?              @db.Text
+  firstName          String?              @db.VarChar(255) @map("firstname")
+  lastName           String?              @db.VarChar(255) @map("lastname")
+  createdAt          DateTime             @default(now()) @map("createdat")
+  updatedAt          DateTime             @updatedAt @map("updatedat")
+  isVerified         Boolean              @default(false) @map("isverified")
+  role               String               @default("USER")
+  isTalentFilled     Boolean              @default(false) @map("istalentfilled")
+  interests          String?              @db.Text
+  bio                String?              @db.Text
+  twitter            String?              @db.Text
+  discord            String?              @db.Text
+  github             String?              @db.Text
+  linkedin           String?              @db.Text
+  website            String?              @db.Text
+  telegram           String?              @db.Text
+  community          String?              @db.Text
+  experience         String?
+  location           String?
+  locationUpdatedAt  DateTime? @map("locationupdatedat")
+  cryptoExperience   String? @map("cryptoexperience")
+  workPrefernce      String? @map("workprefernce")
+  currentEmployer    String? @map("currentemployer")
+  notifications      Json?
+  private            Boolean              @default(false)
+  skills             Json?
+  currentSponsorId   String? @map("currentsponsorid")
+  emailVerified      DateTime? @map("emailverified")
+  hackathonId        String? @map("hackathonid")
+  featureModalShown  Boolean              @default(false) @map("featuremodalshown")
+  surveysShown       Json? @map("surveysshown")
+  stRecommended      Boolean              @default(false) @map("strecommended")
+  acceptedTOS        Boolean              @default(false) @map("acceptedtos")
+  peopleId           String?              @unique @map("peopleid")
+  currentSponsor     Sponsors?            @relation(fields: [currentSponsorId], references: [id])
+  people             People?              @relation("UserToPeople", fields: [peopleId], references: [id])
+  UserSponsors       UserSponsors[]
+  poc                Bounties[]           @relation("poc")
+  templates          BountiesTemplates[]  @relation("poc")
+  Comment            Comment[]
+  Submission         Submission[]
+  Grants             Grants[]
+  UserInvites        UserInvites[]
+  SubscribeBounty    SubscribeBounty[]
+  PoW                PoW[]
+  Hackathon          Hackathon?           @relation(fields: [hackathonId], references: [id])
+  emailSettings      EmailSettings[]
+  TalentRankings     TalentRankings[]
+  Scouts             Scouts[]
+  GrantApplication   GrantApplication[]
+  SubscribeHackathon SubscribeHackathon[]
+  isBlocked          Boolean              @default(false) @map("isblocked")
+  privyDid           String               @unique @map("privydid")
+  isKYCVerified      Boolean              @default(false) @map("iskycverified")
+  kycName            String? @map("kycname")
+  kycCountry         String? @map("kyccountry")
+  kycAddress         String? @map("kycaddress")
+  kycDOB             String? @map("kycdob")
+  kycIDNumber        String? @map("kycidnumber")
+  kycIDType          String? @map("kycidtype")
+  kycVerifiedAt      DateTime? @map("kycverifiedat")
+  CreditLedger       CreditLedger[]
+  blockRationale     String? @map("blockrationale")
+  linkedTwitter      Json? @map("linkedtwitter")
+  referralCode       String?              @unique @map("referralcode")
+  referredById       String? @map("referredbyid")
+  referredBy         User?                @relation("UserReferrals", fields: [referredById], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  referrals          User[]               @relation("UserReferrals")
+  telegramUsers      TelegramUser[]
+  emailLogs          emailLogs[]
+  isPro              Boolean              @default(false) @map("ispro")
+  isAgent            Boolean              @default(false) @map("isagent")
+  agentProfile       Agent?
+  claimedAgents      Agent[]              @relation("AgentClaimedBy")
+
+  @@index([currentSponsorId])
+  @@index([hackathonId])
+  @@index([email])
+  @@index([username])
+  @@index([firstName])
+  @@index([lastName])
+  @@index([location])
+  @@index([referredById])
+  @@map("user")
+}
+
+model Account {
+  userId            String @map("userid")
+  type              String
+  provider          String
+  providerAccountId String @map("provideraccountid")
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              People  @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([provider, providerAccountId])
+  @@index([userId])
+  @@map("account")
+}
+
+model Session {
+  sessionToken String   @unique @map("sessiontoken")
+  userId       String @map("userid")
+  expires      DateTime
+  user         People   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([sessionToken])
+  @@index([userId])
+  @@map("session")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verificationtoken")
+}
+
+model Scouts {
+  id            String   @id @default(uuid())
+  userId        String @map("userid")
+  listingId     String @map("listingid")
+  dollarsEarned Int @map("dollarsearned")
+  score         Decimal  @db.Decimal(9, 2)
+  invited       Boolean
+  skills        Json
+  createdAt     DateTime @default(now()) @map("createdat")
+  listing       Bounties @relation(fields: [listingId], references: [id])
+  user          User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, listingId])
+  @@index([listingId, invited])
+  @@index([listingId, score(sort: Desc)])
+  @@index([userId, listingId, invited])
+  @@index([score(sort: Desc)])
+  @@map("scouts")
+}
+
+model Agent {
+  id              String      @id @default(uuid())
+  name            String
+  userId          String      @unique @map("userid")
+  apiKeyHash      String      @unique @map("apikeyhash")
+  apiKeyPrefix    String @map("apikeyprefix")
+  claimCodeHash   String      @unique @map("claimcodehash")
+  claimCodePrefix String @map("claimcodeprefix")
+  status          AgentStatus @default(ACTIVE)
+  claimedByUserId String? @map("claimedbyuserid")
+  claimedAt       DateTime? @map("claimedat")
+  lastUsedAt      DateTime? @map("lastusedat")
+  metadata        Json?
+  createdAt       DateTime    @default(now()) @map("createdat")
+  updatedAt       DateTime    @updatedAt @map("updatedat")
+
+  user          User         @relation(fields: [userId], references: [id])
+  claimedByUser User?        @relation("AgentClaimedBy", fields: [claimedByUserId], references: [id])
+  submissions   Submission[]
+
+  @@index([userId])
+  @@index([claimedByUserId])
+  @@index([status])
+  @@map("agent")
+}
+
+model TalentRankings {
+  id               String                 @id @default(uuid())
+  userId           String @map("userid")
+  skill            TalentRankingSkills    @default(ALL)
+  timeframe        TalentRankingTimeframe @default(ALL_TIME)
+  rank             Int
+  submissions      Int                    @default(0)
+  winRate          Int                    @default(0) @map("winrate")
+  wins             Int                    @default(0)
+  totalEarnedInUSD Int @map("totalearnedinusd")
+  user             User                   @relation(fields: [userId], references: [id])
+
+  @@unique([userId, skill, timeframe])
+  @@index([skill, timeframe, rank(sort: Asc)])
+  @@index([totalEarnedInUSD(sort: Desc)])
+  @@index([rank(sort: Asc)])
+  @@index([winRate(sort: Desc)])
+  @@map("talentrankings")
+}
+
+model PoW {
+  id          String    @id @default(uuid())
+  userId      String @map("userid")
+  title       String
+  description String    @db.Text
+  skills      Json?
+  link        String    @db.Text
+  createdAt   DateTime  @default(now()) @map("createdat")
+  subSkills   Json? @map("subskills")
+  updatedAt   DateTime  @updatedAt @map("updatedat")
+  like        Json?
+  likeCount   Int       @default(0) @map("likecount")
+  user        User      @relation(fields: [userId], references: [id])
+  ogImage     String?   @db.Text @map("ogimage")
+  Comments    Comment[]
+
+  @@index([createdAt])
+  @@index([likeCount])
+  @@index([likeCount(sort: Desc), createdAt(sort: Desc)])
+  @@index([userId, createdAt(sort: Desc)])
+  @@index([userId, id])
+  @@map("pow")
+}
+
+model EmailSettings {
+  id       Int    @id @default(autoincrement())
+  userId   String @map("userid")
+  category String
+  user     User   @relation(fields: [userId], references: [id])
+
+  @@index([userId, category])
+  @@index([category])
+  @@map("emailsettings")
+}
+
+model UserSponsors {
+  userId    String @map("userid")
+  sponsorId String @map("sponsorid")
+  role      Role     @default(MEMBER)
+  createdAt DateTime @default(now()) @map("createdat")
+  updatedAt DateTime @updatedAt @map("updatedat")
+  user      User     @relation(fields: [userId], references: [id])
+  sponsor   Sponsors @relation(fields: [sponsorId], references: [id])
+
+  @@id([userId, sponsorId])
+  @@index([sponsorId])
+  @@map("usersponsors")
+}
+
+model UserInvites {
+  id         String   @id @default(uuid())
+  email      String
+  senderId   String @map("senderid")
+  createdAt  DateTime @default(now()) @map("createdat")
+  updatedAt  DateTime @updatedAt @map("updatedat")
+  sponsorId  String @map("sponsorid")
+  memberType Role     @default(MEMBER) @map("membertype")
+  token      String   @unique
+  expires    DateTime
+  sender     User     @relation(fields: [senderId], references: [id])
+  sponsor    Sponsors @relation(fields: [sponsorId], references: [id])
+
+  @@index([senderId])
+  @@index([sponsorId])
+  @@map("userinvites")
+}
+
+model emailLogs {
+  id        String    @id @default(uuid())
+  email     String?
+  type      EmailType
+  bountyId  String? @map("bountyid")
+  userId    String? @map("userid")
+  user      User?     @relation(fields: [userId], references: [id])
+  createdAt DateTime  @default(now()) @map("createdat")
+  updatedAt DateTime  @updatedAt @map("updatedat")
+
+  @@index([bountyId, type])
+  @@index([userId, type])
+  @@index([type, createdAt(sort: Desc)])
+  @@index([email, type])
+  @@map("emaillogs")
+}
+
+model ResendLogs {
+  id        String   @id @default(uuid())
+  email     String
+  subject   String
+  status    String
+  createdAt DateTime @default(now()) @map("createdat")
+  updatedAt DateTime @updatedAt @map("updatedat")
+
+  @@index([email, createdAt(sort: Desc)])
+  @@index([createdAt(sort: Desc)])
+  @@index([status])
+  @@index([email, status])
+  @@map("resendlogs")
+}
+
+model SubscribeBounty {
+  id         String    @id @default(uuid())
+  userId     String @map("userid")
+  bountyId   String @map("bountyid")
+  isArchived Boolean   @default(false) @map("isarchived")
+  createdAt  DateTime  @default(now()) @map("createdat")
+  updatedAt  DateTime  @updatedAt @map("updatedat")
+  User       User      @relation(fields: [userId], references: [id])
+  Bounties   Bounties? @relation(fields: [bountyId], references: [id])
+
+  @@unique([userId, bountyId])
+  @@index([bountyId, isArchived])
+  @@index([userId, isArchived])
+  @@map("subscribebounty")
+}
+
+model SubscribeHackathon {
+  id          String     @id @default(uuid())
+  userId      String @map("userid")
+  hackathonId String @map("hackathonid")
+  isArchived  Boolean    @default(false) @map("isarchived")
+  createdAt   DateTime   @default(now()) @map("createdat")
+  updatedAt   DateTime   @updatedAt @map("updatedat")
+  User        User       @relation(fields: [userId], references: [id])
+  Hackthons   Hackathon? @relation(fields: [hackathonId], references: [id])
+
+  @@index([hackathonId])
+  @@index([userId])
+  @@map("subscribehackathon")
+}
+
+model Hackathon {
+  id                 String               @id @default(uuid())
+  slug               String               @unique
+  name               String
+  logo               String
+  sponsorId          String?              @unique @map("sponsorid")
+  deadline           DateTime?
+  startDate          DateTime? @map("startdate")
+  description        String
+  altLogo            String? @map("altlogo")
+  announceDate       DateTime? @map("announcedate")
+  eligibility        Json?
+  listings           Bounties[]
+  Sponsor            Sponsors?            @relation(fields: [sponsorId], references: [id])
+  User               User[]
+  SubscribeHackathon SubscribeHackathon[]
+  @@map("hackathon")
+}
+
+model UnsubscribedEmail {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  createdAt DateTime @default(now()) @map("createdat")
+  @@map("unsubscribedemail")
+}
+
+model BlockedEmail {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  reason    String?
+  createdAt DateTime @default(now()) @map("createdat")
+  @@map("blockedemail")
+}
+
+model CreditLedger {
+  id             String            @id @default(uuid())
+  userId         String @map("userid")
+  submissionId   String? @map("submissionid")
+  applicationId  String? @map("applicationid")
+  type           CreditEventType
+  change         Int
+  effectiveMonth DateTime @map("effectivemonth")
+  createdAt      DateTime          @default(now()) @map("createdat")
+  user           User              @relation(fields: [userId], references: [id])
+  submission     Submission?       @relation(fields: [submissionId], references: [id])
+  application    GrantApplication? @relation(fields: [applicationId], references: [id])
+  decision       SubmissionStatus?
+
+  @@index([userId])
+  @@index([submissionId])
+  @@index([applicationId])
+  @@index([effectiveMonth])
+  @@map("creditledger")
+}
+
+model TelegramUser {
+  id           String   @id @default(uuid())
+  telegramId   BigInt   @unique @map("telegramid")
+  username     String?
+  chatId       BigInt @map("chatid")
+  isSubscribed Boolean  @default(false) @map("issubscribed")
+  isOnboarded  Boolean  @default(false) @map("isonboarded")
+  preferences  Json?
+  createdAt    DateTime @default(now()) @map("createdat")
+  updatedAt    DateTime @updatedAt @map("updatedat")
+
+  user   User?   @relation(fields: [userId], references: [id])
+  userId String? @map("userid")
+
+  @@index([userId])
+  @@index([isSubscribed])
+  @@map("telegramuser")
+}
+
+model ProPerks {
+  id          String @id @default(uuid())
+  header      String
+  description String
+  cta         String
+  ctaLink     String @map("ctalink")
+  logo        String
+  @@map("properks")
+}
+
+model Chapter {
+  id                String                 @id @default(uuid()) @db.Char(36)
+  name              String                 @unique @db.VarChar(100)
+  slug              String                 @unique @db.VarChar(120)
+  region            String                 @db.VarChar(100)
+  displayValue      String?                @db.VarChar(100) @map("displayvalue")
+  code              String?                @db.VarChar(40)
+  countries         Json?
+  memberForm        String?                @db.VarChar(255) @map("memberform")
+  active            Boolean                @default(true)
+  community         String?                @db.VarChar(255)
+  pocName           String?                @db.VarChar(255) @map("pocname")
+  pocEmail          String?                @db.VarChar(255) @map("pocemail")
+  twitterUsername   String?                @db.VarChar(100) @map("twitterusername")
+  link              String?                @db.VarChar(255)
+  icons             String?                @db.Text
+  banner            String?                @db.Text
+  hello             String?                @db.VarChar(80)
+  nationality       String?                @db.VarChar(120)
+  tgChatId          String? @map("tgchatid")
+  tgThreadId        String? @map("tgthreadid")
+  registeredBy      String? @map("registeredby")
+  sponsorId         String?                @unique @map("sponsorid")
+  createdAt         DateTime               @default(now()) @map("createdat")
+  updatedAt         DateTime               @updatedAt @map("updatedat")
+  sponsor           Sponsors?              @relation(fields: [sponsorId], references: [id])
+  people            People[]
+  communityEarnings CommunityEarning[]
+  events            Event[]
+  jobs              Job[]
+  vcExternalGrants  VcExternalGrant[]
+  lumaEventReviews  LumaEventReview[]
+  memberInvites     MemberInvite[]
+  publicJoinOtps    PublicJoinOtp[]
+  resourceDoc       ChapterResourceDoc?
+  memberHistory     MemberChapterHistory[]
+
+  @@index([region])
+  @@map("chapter")
+}
+
+model MemberInvite {
+  id        String    @id @default(uuid()) @db.Char(36)
+  email     String
+  chapterId String    @db.Char(36) @map("chapterid")
+  invitedBy String    @db.Char(36) @map("invitedby")
+  status    String    @default("pending") @db.VarChar(20)
+  token     String?   @unique @db.Char(36)
+  expiresAt DateTime? @map("expiresat")
+  createdAt DateTime  @default(now()) @map("createdat")
+  updatedAt DateTime  @updatedAt @map("updatedat")
+  chapter   Chapter   @relation(fields: [chapterId], references: [id])
+
+  @@unique([email, chapterId])
+  @@index([email])
+  @@index([chapterId])
+  @@map("memberinvite")
+}
+
+model PublicJoinOtp {
+  id         String    @id @default(uuid()) @db.Char(36)
+  email      String    @db.VarChar(255)
+  chapterId  String    @db.Char(36) @map("chapterid")
+  codeHash   String    @db.VarChar(255) @map("codehash")
+  attempts   Int       @default(0)
+  expiresAt  DateTime @map("expiresat")
+  verifiedAt DateTime? @map("verifiedat")
+  consumedAt DateTime? @map("consumedat")
+  createdAt  DateTime  @default(now()) @map("createdat")
+  chapter    Chapter   @relation(fields: [chapterId], references: [id])
+
+  @@index([email, chapterId])
+  @@index([expiresAt])
+  @@map("publicjoinotp")
+}
+
+model People {
+  id                   String                  @id @default(uuid()) @db.Char(36)
+  name                 String                  @db.VarChar(255)
+  email                String                  @unique @db.VarChar(255)
+  chapterId            String                  @db.Char(36) @map("chapterid")
+  type                 String?                 @db.VarChar(50)
+  xUsername            String?                 @db.VarChar(100) @map("xusername")
+  telegram             String?                 @db.VarChar(100)
+  discord              String?                 @db.VarChar(100)
+  solWallet            String?                 @db.VarChar(50) @map("solwallet")
+  city                 String?                 @db.VarChar(100)
+  skills               String?                 @db.Text
+  username             String?                 @unique @db.VarChar(40)
+  photo                String?                 @db.Text
+  bio                  String?                 @db.Text
+  shortBio             String?                 @db.VarChar(100) @map("shortbio")
+  role                 String?                 @db.VarChar(20)
+  proofOfWork          String?                 @db.Text @map("proofofwork")
+  bestWorkUrl          String?                 @db.VarChar(500) @map("bestworkurl")
+  linkedin             String?                 @db.VarChar(100)
+  calendarUrl          String?                 @db.VarChar(500) @map("calendarurl")
+  memberAppSignedUp    Boolean                 @default(false) @map("memberappsignedup")
+  source               String                  @default("Legacy") @db.VarChar(50)
+  airtableRecordId     String                  @db.VarChar(50) @map("airtablerecordid")
+  purgedAt             DateTime? @map("purgedat")
+  createdAt            DateTime                @default(now()) @map("createdat")
+  updatedAt            DateTime                @default(now()) @updatedAt @map("updatedat")
+  communityEarnings    CommunityEarning[]
+  jobs                 Job[]
+  vcExternalGrants     VcExternalGrant[]
+  chapter              Chapter                 @relation(fields: [chapterId], references: [id])
+  user                 User?                   @relation("UserToPeople")
+  accounts             Account[]
+  sessions             Session[]
+  forumTopics          ForumTopic[]
+  forumReplies         ForumReply[]
+  forumMentions        ForumTopicMention[]     @relation("ForumTopicMentionMember")
+  createdMentions      ForumTopicMention[]     @relation("ForumTopicMentionCreator")
+  shipmentOverlays     MemberShipmentOverlay[]
+  kudosGiven           Kudos[]                 @relation("KudosGiver")
+  kudosReceived        Kudos[]                 @relation("KudosRecipient")
+  levelOverlay         MemberLevel?
+  levelUpgradeRequests LevelUpgradeRequest[]
+  chapterHistory       MemberChapterHistory[]
+
+  @@unique([airtableRecordId])
+  @@index([chapterId])
+  @@index([type, email])
+  @@index([type, name])
+  @@map("people")
+}
+
+model CommunityEarning {
+  id             String   @id @default(uuid()) @db.Char(36)
+  createdAt      DateTime @default(now()) @map("createdat")
+  superteamId    String   @db.Char(36) @map("superteamid")
+  earningTitle   String   @db.VarChar(255) @map("earningtitle")
+  tokenAmount    Decimal  @db.Decimal(15, 2) @map("tokenamount")
+  tokenName      String   @db.VarChar(50) @map("tokenname")
+  usdValue       Decimal  @db.Decimal(15, 2) @map("usdvalue")
+  category       String   @db.VarChar(50)
+  dateOfEarning  DateTime @db.Date @map("dateofearning")
+  peopleId       String   @db.Char(36) @map("peopleid")
+  sponsorName    String   @db.VarChar(255) @map("sponsorname")
+  contractLength Int? @map("contractlength")
+  proofOfEarning String?  @db.Text @map("proofofearning")
+  isVerified     Int      @default(1) @map("isverified")
+  chapter        Chapter  @relation(fields: [superteamId], references: [id])
+  people         People   @relation(fields: [peopleId], references: [id])
+  @@map("communityearning")
+}
+
+model Event {
+  id              String    @id @default(uuid()) @db.Char(36)
+  createdAt       DateTime  @default(now()) @map("createdat")
+  superteamId     String    @db.Char(36) @map("superteamid")
+  eventTitle      String    @db.VarChar(255) @map("eventtitle")
+  eventLumaLink   String?   @db.VarChar(500) @map("eventlumalink")
+  eventDate       DateTime  @db.Date @map("eventdate")
+  eventType       String    @db.VarChar(50) @map("eventtype")
+  eventCategory   String    @db.VarChar(100) @map("eventcategory")
+  eventAttendance Int @map("eventattendance")
+  isVerified      Int       @default(1) @map("isverified")
+  lumaEventId     String?   @unique @db.VarChar(100) @map("lumaeventid")
+  lastSyncedAt    DateTime? @map("lastsyncedat")
+  chapter         Chapter   @relation(fields: [superteamId], references: [id])
+  @@map("event")
+}
+
+model Job {
+  id          String   @id @default(uuid()) @db.Char(36)
+  createdAt   DateTime @default(now()) @map("createdat")
+  superteamId String   @db.Char(36) @map("superteamid")
+  peopleId    String   @db.Char(36) @map("peopleid")
+  companyName String   @db.VarChar(255) @map("companyname")
+  roleTitle   String   @db.VarChar(255) @map("roletitle")
+  roleType    String   @db.VarChar(100) @map("roletype")
+  roleTier    String   @db.VarChar(100) @map("roletier")
+  salary      Int      @default(0)
+  isVerified  Int      @default(1) @map("isverified")
+  chapter     Chapter  @relation(fields: [superteamId], references: [id])
+  people      People   @relation(fields: [peopleId], references: [id])
+  @@map("job")
+}
+
+model VcExternalGrant {
+  id                     String   @id @default(uuid()) @db.Char(36)
+  createdAt              DateTime @default(now()) @map("createdat")
+  superteamId            String   @db.Char(36) @map("superteamid")
+  projectName            String   @db.VarChar(255) @map("projectname")
+  projectUrl             String   @db.VarChar(500) @map("projecturl")
+  vcGrantor              String   @db.VarChar(255) @map("vcgrantor")
+  peopleId               String   @db.Char(36) @map("peopleid")
+  amountRaisedUsd        Decimal  @db.Decimal(15, 2) @map("amountraisedusd")
+  fundingAnnouncementUrl String?  @db.VarChar(500) @map("fundingannouncementurl")
+  isVerified             Int      @default(1) @map("isverified")
+  chapter                Chapter  @relation(fields: [superteamId], references: [id])
+  people                 People   @relation(fields: [peopleId], references: [id])
+  @@map("vcexternalgrant")
+}
+
+model LumaEventReview {
+  id               String   @id @default(uuid()) @db.Char(36)
+  createdAt        DateTime @default(now()) @map("createdat")
+  superteamId      String   @db.Char(36) @map("superteamid")
+  lumaEventId      String   @db.VarChar(100) @map("lumaeventid")
+  lumaEventUrl     String   @db.VarChar(500) @map("lumaeventurl")
+  eventTitle       String   @db.VarChar(255) @map("eventtitle")
+  analysisApproved Int @map("analysisapproved")
+  analysisScore    Int @map("analysisscore")
+  analysisFeedback String?  @db.VarChar(2000) @map("analysisfeedback")
+  addedToCalendar  Int      @default(0) @map("addedtocalendar")
+  isVerified       Int      @default(1) @map("isverified")
+  chapter          Chapter  @relation(fields: [superteamId], references: [id])
+  @@map("lumaeventreview")
+}
+
+model InstagrantReviewAssessment {
+  id                 String   @id @default(uuid()) @db.Char(36)
+  createdAt          DateTime @default(now()) @map("createdat")
+  updatedAt          DateTime @updatedAt @map("updatedat")
+  grantApplicationId String   @db.VarChar(191) @map("grantapplicationid")
+  reviewerPeopleId   String   @db.Char(36) @map("reviewerpeopleid")
+  score              Int?
+  notes              String?  @db.Text
+
+  @@unique([grantApplicationId, reviewerPeopleId])
+  @@index([reviewerPeopleId])
+  @@index([grantApplicationId])
+  @@map("instagrantreviewassessment")
+}
+
+model StatsSlackMessage {
+  id        String   @id @default(uuid()) @db.Char(36)
+  messageTs String   @db.VarChar(50) @map("messagets")
+  channelId String   @db.VarChar(50) @map("channelid")
+  formType  String   @db.VarChar(50) @map("formtype")
+  recordId  String   @db.Char(36) @map("recordid")
+  createdAt DateTime @default(now()) @map("createdat")
+
+  @@unique([channelId, messageTs])
+  @@index([formType, recordId])
+  @@map("statsslackmessage")
+}
+
+model RegionSnapshot {
+  id                     String   @id @default(uuid()) @db.Char(36)
+  cronDate               DateTime @db.Date @map("crondate")
+  region                 String   @db.VarChar(100)
+  totalGdp               Decimal  @default(0) @db.Decimal(15, 2) @map("totalgdp")
+  organicGdp             Decimal  @default(0) @db.Decimal(15, 2) @map("organicgdp")
+  inorganicGdp           Decimal  @default(0) @db.Decimal(15, 2) @map("inorganicgdp")
+  totalBounties          Decimal  @default(0) @db.Decimal(15, 2) @map("totalbounties")
+  totalGrants            Decimal  @default(0) @db.Decimal(15, 2) @map("totalgrants")
+  totalJobs              Decimal  @default(0) @db.Decimal(15, 2) @map("totaljobs")
+  totalJobsCount         Int      @default(0) @map("totaljobscount")
+  totalHackathons        Decimal  @default(0) @db.Decimal(15, 2) @map("totalhackathons")
+  totalContracts         Decimal  @default(0) @db.Decimal(15, 2) @map("totalcontracts")
+  totalFunding           Decimal  @default(0) @db.Decimal(15, 2) @map("totalfunding")
+  earnProfiles           Int      @default(0) @map("earnprofiles")
+  totalGrantApplications Int      @default(0) @map("totalgrantapplications")
+  totalSubmissions       Int      @default(0) @map("totalsubmissions")
+  totalUniqueEarners     Int      @default(0) @map("totaluniqueearners")
+  allTimeUniqueEarners   Int      @default(0) @map("alltimeuniqueearners")
+  totalEarnings          Decimal  @default(0) @db.Decimal(15, 2) @map("totalearnings")
+  virtualAttendees       Int      @default(0) @map("virtualattendees")
+  irlAttendees           Int      @default(0) @map("irlattendees")
+  totalAttendees         Int      @default(0) @map("totalattendees")
+  virtualEvents          Int      @default(0) @map("virtualevents")
+  irlEvents              Int      @default(0) @map("irlevents")
+  totalEvents            Int      @default(0) @map("totalevents")
+  members                Int      @default(0)
+  twitter                Int      @default(0)
+  createdAt              DateTime @default(now()) @map("createdat")
+  updatedAt              DateTime @updatedAt @map("updatedat")
+
+  @@unique([cronDate, region])
+  @@index([region, cronDate])
+  @@map("regionsnapshot")
+}
+
+model LegacyGdpEarning {
+  id                String   @id @db.Char(32)
+  source            String   @db.VarChar(50)
+  sourceRowNumber   Int @map("sourcerownumber")
+  sourceRecordId    String?  @db.VarChar(100) @map("sourcerecordid")
+  name              String   @db.VarChar(500)
+  type              String   @db.VarChar(50)
+  sponsor           String?  @db.VarChar(255)
+  sponsorNew        String?  @db.VarChar(255) @map("sponsornew")
+  foundation        String?  @db.VarChar(50)
+  region            String   @db.VarChar(100)
+  date              DateTime @db.Date
+  month             String   @db.VarChar(7)
+  amount            Decimal  @default(0) @db.Decimal(15, 2)
+  amountUsd         Decimal  @default(0) @db.Decimal(15, 2) @map("amountusd")
+  organicGdp        Decimal  @default(0) @db.Decimal(15, 2) @map("organicgdp")
+  inorganicGdp      Decimal  @default(0) @db.Decimal(15, 2) @map("inorganicgdp")
+  totalBounties     Decimal  @default(0) @db.Decimal(15, 2) @map("totalbounties")
+  totalGrants       Decimal  @default(0) @db.Decimal(15, 2) @map("totalgrants")
+  totalJobs         Decimal  @default(0) @db.Decimal(15, 2) @map("totaljobs")
+  totalContracts    Decimal  @default(0) @db.Decimal(15, 2) @map("totalcontracts")
+  totalHackathons   Decimal  @default(0) @db.Decimal(15, 2) @map("totalhackathons")
+  currency          String?  @db.VarChar(50)
+  token             String?  @db.VarChar(50)
+  coingeckoId       String?  @db.VarChar(100) @map("coingeckoid")
+  duplicate         Boolean  @default(false)
+  isCurrentMonth    Boolean  @default(false) @map("iscurrentmonth")
+  rainmakerName     String?  @db.VarChar(255) @map("rainmakername")
+  earner            String?  @db.Text
+  memberEarner      String?  @db.Text @map("memberearner")
+  allEarners        String?  @db.Text @map("allearners")
+  earners           Json?
+  earnApplicationId String?  @db.VarChar(100) @map("earnapplicationid")
+  earnBountyId      String?  @db.VarChar(100) @map("earnbountyid")
+  createdAt         DateTime @default(now()) @map("createdat")
+  updatedAt         DateTime @updatedAt @map("updatedat")
+
+  @@unique([source, sourceRowNumber])
+  @@index([region, month])
+  @@index([month])
+  @@index([type])
+  @@index([earnApplicationId])
+  @@index([earnBountyId])
+  @@map("legacygdpearning")
+}
+
+enum CreditEventType {
+  SUBMISSION
+  SPAM_PENALTY
+  WIN_BONUS
+  MONTHLY_CREDIT
+  CREDIT_REFUND
+  GRANT_WIN_BONUS
+  GRANT_SPAM_PENALTY
+  SPAM_DISPUTE
+  GRANT_SPAM_DISPUTE
+  REFERRAL_FIRST_SUBMISSION_BONUS_INVITEE
+  REFERRAL_FIRST_SUBMISSION_BONUS_INVITER
+  REFERRAL_INVITEE_WIN_BONUS_INVITER
+}
+
+enum TalentRankingSkills {
+  DEVELOPMENT
+  DESIGN
+  CONTENT
+  OTHER
+  ALL
+}
+
+enum EmailType {
+  BOUNTY_REVIEW
+  BOUNTY_DEADLINE
+  BOUNTY_DEADLINE_WEEK
+  BOUNTY_CLOSE_DEADLINE
+  BOUNTY_COMMITMENT_2DAYS
+  NO_VERIFICATION
+  NO_ACTIVITY
+  NO_REVIEW_SPONSOR_1
+  NO_REVIEW_SPONSOR_2
+  ROLLING_15_DAYS
+  ROLLING_30_DAYS
+  NEW_LISTING
+  ROLLING_UNPUBLISH
+  UNFILLED_PROFILE
+  WALLET_ANNOUNCEMENT
+  CREDITS_ANNOUNCEMENT
+  AUTO_GENERATE_ANNOUNCEMENT
+  NEW_LISTING_TELEGRAM
+  REFERRAL_ANNOUNCEMENT
+  PRO_FEATURE_ANNOUNCEMENT
+  GRANTEE_ACTIVATION
+  SPONSOR_ANNOUNCEMENT_150K
+  KALSHI_GRANTS
+  PENDING_GRANT_USDG
+  APPROVED_GRANT_USDG
+  PASSKEY_DEPRECATION
+  EITHERWAY_FRONTIER_ANNOUNCEMENT
+}
+
+enum Role {
+  ADMIN
+  MEMBER
+}
+
+enum Source {
+  NATIVE
+  IMPORT
+}
+
+enum AgentStatus {
+  ACTIVE
+  REVOKED
+}
+
+enum AgentAccess {
+  HUMAN_ONLY
+  AGENT_ALLOWED
+  AGENT_ONLY
+}
+
+enum ApplicationType {
+  rolling
+  fixed
+}
+
+enum status {
+  OPEN
+  REVIEW
+  CLOSED
+  VERIFYING
+  VERIFY_FAIL
+}
+
+enum GrantStatus {
+  OPEN
+  CLOSED
+}
+
+enum GrantApplicationStatus {
+  Pending
+  Approved
+  Completed
+  Rejected
+}
+
+enum BountyType {
+  bounty
+  project
+  hackathon
+}
+
+enum CommentRefType {
+  BOUNTY
+  SUBMISSION
+  GRANT_APPLICATION
+  POW
+}
+
+enum CommentType {
+  NORMAL
+  SUBMISSION
+  DEADLINE_EXTENSION
+  WINNER_ANNOUNCEMENT
+}
+
+enum CompensationType {
+  fixed
+  range
+  variable
+}
+
+enum SubmissionLabels {
+  Unreviewed
+  Reviewed
+  Shortlisted
+  Spam
+  Low_Quality
+  Mid_Quality
+  High_Quality
+  Pending
+  Inaccessible
+  Needs_Review
+}
+
+enum TalentRankingTimeframe {
+  THIS_YEAR
+  LAST_30_DAYS
+  LAST_7_DAYS
+  ALL_TIME
+}
+
+enum SubmissionStatus {
+  Pending
+  Approved
+  Rejected
+}
+
+enum GrantTrancheStatus {
+  Pending
+  Approved
+  Paid
+  Rejected
+}
+
+model TranslationCache {
+  sourceHash String   @db.Char(40) @map("sourcehash")
+  targetLang String   @db.VarChar(8) @map("targetlang")
+  sourceLang String   @db.VarChar(8) @map("sourcelang")
+  text       String   @db.Text
+  createdAt  DateTime @default(now()) @map("createdat")
+
+  @@id([sourceHash, targetLang])
+  @@index([createdAt])
+  @@map("translationcache")
+}
+
+model Feedback {
+  id         String   @id @default(uuid()) @db.Char(36)
+  memberId   String?  @db.Char(36) @map("memberid")
+  pathname   String   @db.VarChar(500)
+  message    String   @db.Text
+  screenshot String?  @db.Text
+  userAgent  String?  @db.VarChar(500) @map("useragent")
+  createdAt  DateTime @default(now()) @map("createdat")
+
+  @@index([memberId, createdAt])
+  @@index([createdAt])
+  @@map("feedback")
+}
+
+model ForumTopic {
+  id                   String              @id @default(uuid()) @db.Char(36)
+  title                String              @db.VarChar(255)
+  body                 String              @db.Text
+  authorId             String              @db.Char(36) @map("authorid")
+  category             String?             @db.VarChar(80)
+  launchDate           DateTime? @map("launchdate")
+  resolvedAt           DateTime? @map("resolvedat")
+  introducedAt         DateTime? @map("introducedat")
+  introducedById       String?             @db.Char(36) @map("introducedbyid")
+  introducedExternally Boolean             @default(false) @map("introducedexternally")
+  acceptedReplyId      String?             @db.Char(36) @map("acceptedreplyid")
+  amaHostName          String?             @db.VarChar(120) @map("amahostname")
+  amaHostXHandle       String?             @db.VarChar(40) @map("amahostxhandle")
+  amaHostPhotoUrl      String?             @db.VarChar(500) @map("amahostphotourl")
+  amaScheduledAt       DateTime? @map("amascheduledat")
+  amaVideoUrl          String?             @db.VarChar(500) @map("amavideourl")
+  isPinned             Boolean             @default(false) @map("ispinned")
+  isHidden             Boolean             @default(false) @map("ishidden")
+  createdAt            DateTime            @default(now()) @map("createdat")
+  updatedAt            DateTime            @updatedAt @map("updatedat")
+  author               People              @relation(fields: [authorId], references: [id])
+  replies              ForumReply[]
+  mentions             ForumTopicMention[]
+
+  @@index([authorId])
+  @@index([category])
+  @@index([acceptedReplyId])
+  @@index([isHidden, isPinned, updatedAt])
+  @@index([category, launchDate])
+  @@index([category, resolvedAt])
+  @@index([category, introducedAt])
+  @@index([createdAt])
+  @@map("forumtopic")
+}
+
+model ForumReply {
+  id              String       @id @default(uuid()) @db.Char(36)
+  topicId         String       @db.Char(36) @map("topicid")
+  parentReplyId   String?      @db.Char(36) @map("parentreplyid")
+  authorId        String       @db.Char(36) @map("authorid")
+  body            String       @db.Text
+  isHidden        Boolean      @default(false) @map("ishidden")
+  amaAnsweredAt   DateTime? @map("amaansweredat")
+  amaAnsweredById String?      @db.Char(36) @map("amaansweredbyid")
+  createdAt       DateTime     @default(now()) @map("createdat")
+  updatedAt       DateTime     @updatedAt @map("updatedat")
+  topic           ForumTopic   @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  parentReply     ForumReply?  @relation("ForumReplyThread", fields: [parentReplyId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  childReplies    ForumReply[] @relation("ForumReplyThread")
+  author          People       @relation(fields: [authorId], references: [id])
+
+  @@index([topicId, parentReplyId, createdAt])
+  @@index([topicId, createdAt])
+  @@index([topicId, amaAnsweredAt])
+  @@index([parentReplyId])
+  @@index([authorId])
+  @@map("forumreply")
+}
+
+model ForumTopicMention {
+  id          String     @id @default(uuid()) @db.Char(36)
+  topicId     String     @db.Char(36) @map("topicid")
+  memberId    String     @db.Char(36) @map("memberid")
+  createdById String     @db.Char(36) @map("createdbyid")
+  createdAt   DateTime   @default(now()) @map("createdat")
+  topic       ForumTopic @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  member      People     @relation("ForumTopicMentionMember", fields: [memberId], references: [id])
+  createdBy   People     @relation("ForumTopicMentionCreator", fields: [createdById], references: [id])
+
+  @@unique([topicId, memberId])
+  @@index([memberId, createdAt])
+  @@index([createdById])
+  @@map("forumtopicmention")
+}
+
+model MemberPointEvent {
+  id             String   @id @default(uuid()) @db.Char(36)
+  memberId       String   @db.Char(36) @map("memberid")
+  actorId        String?  @db.Char(36) @map("actorid")
+  action         String   @db.VarChar(80)
+  points         Int
+  sourceType     String   @db.VarChar(80) @map("sourcetype")
+  sourceId       String?  @db.VarChar(191) @map("sourceid")
+  reason         String   @db.VarChar(255)
+  idempotencyKey String   @unique @db.VarChar(191) @map("idempotencykey")
+  metadata       Json?
+  createdAt      DateTime @default(now()) @map("createdat")
+
+  @@index([memberId, createdAt])
+  @@index([actorId])
+  @@index([sourceType, sourceId])
+  @@index([action])
+  @@map("memberpointevent")
+}
+
+model MemberPointBalance {
+  memberId    String   @id @db.Char(36) @map("memberid")
+  totalPoints Int      @default(0) @map("totalpoints")
+  updatedAt   DateTime @updatedAt @map("updatedat")
+  @@map("memberpointbalance")
+}
+
+model MemberVote {
+  id         String   @id @default(uuid()) @db.Char(36)
+  voterId    String   @db.Char(36) @map("voterid")
+  targetType String   @db.VarChar(80) @map("targettype")
+  targetId   String   @db.VarChar(191) @map("targetid")
+  value      Int      @default(1)
+  createdAt  DateTime @default(now()) @map("createdat")
+  updatedAt  DateTime @updatedAt @map("updatedat")
+
+  @@unique([voterId, targetType, targetId])
+  @@index([targetType, targetId])
+  @@index([voterId])
+  @@map("membervote")
+}
+
+model Kudos {
+  id          String   @id @default(uuid()) @db.Char(36)
+  giverId     String   @db.Char(36) @map("giverid")
+  recipientId String   @db.Char(36) @map("recipientid")
+  reaction    String   @db.VarChar(16)
+  message     String   @db.VarChar(300)
+  isHidden    Boolean  @default(false) @map("ishidden")
+  createdAt   DateTime @default(now()) @map("createdat")
+  giver       People   @relation("KudosGiver", fields: [giverId], references: [id])
+  recipient   People   @relation("KudosRecipient", fields: [recipientId], references: [id])
+
+  @@index([isHidden, createdAt])
+  @@index([giverId, recipientId, createdAt])
+  @@index([giverId, createdAt])
+  @@index([recipientId, createdAt])
+  @@map("kudos")
+}
+
+model MemberShipmentOverlay {
+  id          String    @id @default(uuid()) @db.Char(36)
+  memberId    String    @db.Char(36) @map("memberid")
+  shipmentKey String    @db.VarChar(191) @map("shipmentkey")
+  sourceType  String    @db.VarChar(40) @map("sourcetype")
+  title       String?   @db.VarChar(180)
+  description String?   @db.VarChar(500)
+  href        String?   @db.VarChar(500)
+  imageUrl    String?   @db.VarChar(500) @map("imageurl")
+  shippedAt   DateTime? @map("shippedat")
+  isHidden    Boolean   @default(false) @map("ishidden")
+  createdAt   DateTime  @default(now()) @map("createdat")
+  updatedAt   DateTime  @updatedAt @map("updatedat")
+  member      People    @relation(fields: [memberId], references: [id], onDelete: Cascade)
+
+  @@unique([memberId, shipmentKey])
+  @@index([memberId, isHidden, shippedAt])
+  @@index([sourceType, shipmentKey])
+  @@map("membershipmentoverlay")
+}
+
+model MemberPerk {
+  id                String   @id @default(uuid()) @db.Char(36)
+  title             String   @db.VarChar(160)
+  description       String   @db.Text
+  imageUrl          String   @db.VarChar(500) @map("imageurl")
+  claimInstructions String   @db.Text @map("claiminstructions")
+  published         Boolean  @default(false)
+  chapterIds        Json? @map("chapterids")
+  category          String?  @db.VarChar(80)
+  minLevel          Int      @default(1) @map("minlevel")
+  sortOrder         Int      @default(0) @map("sortorder")
+  createdAt         DateTime @default(now()) @map("createdat")
+  updatedAt         DateTime @updatedAt @map("updatedat")
+
+  @@index([published, sortOrder])
+  @@map("memberperk")
+}
+
+model MemberLevel {
+  memberId  String   @id @db.Char(36) @map("memberid")
+  level     Int      @default(1)
+  updatedAt DateTime @updatedAt @map("updatedat")
+  member    People   @relation(fields: [memberId], references: [id])
+  @@map("memberlevel")
+}
+
+model MemberChapterHistory {
+  id        String    @id @default(uuid()) @db.Char(36)
+  memberId  String    @db.Char(36) @map("memberid")
+  chapterId String    @db.Char(36) @map("chapterid")
+  joinedAt  DateTime? @map("joinedat")
+  leftAt    DateTime? @map("leftat")
+  createdAt DateTime  @default(now()) @map("createdat")
+  member    People    @relation(fields: [memberId], references: [id], onDelete: Cascade)
+  chapter   Chapter   @relation(fields: [chapterId], references: [id])
+
+  @@index([memberId, leftAt])
+  @@index([chapterId])
+  @@map("memberchapterhistory")
+}
+
+model LevelUpgradeRequest {
+  id             String    @id @default(uuid()) @db.Char(36)
+  memberId       String    @db.Char(36) @map("memberid")
+  requestedLevel Int @map("requestedlevel")
+  message        String    @db.Text
+  status         String    @default("pending") @db.VarChar(20)
+  perkTitle      String?   @db.VarChar(160) @map("perktitle")
+  reviewedById   String?   @db.Char(36) @map("reviewedbyid")
+  reviewedAt     DateTime? @map("reviewedat")
+  createdAt      DateTime  @default(now()) @map("createdat")
+  updatedAt      DateTime  @updatedAt @map("updatedat")
+  member         People    @relation(fields: [memberId], references: [id])
+
+  @@index([status, createdAt])
+  @@index([memberId, status])
+  @@map("levelupgraderequest")
+}
+
+model ChapterResourceDoc {
+  chapterId   String   @id @db.Char(36) @map("chapterid")
+  markdown    String   @db.Text
+  updatedById String?  @db.Char(36) @map("updatedbyid")
+  updatedAt   DateTime @updatedAt @map("updatedat")
+  chapter     Chapter  @relation(fields: [chapterId], references: [id])
+  @@map("chapterresourcedoc")
+}
+
+model PortalDocument {
+  slug        String   @id @db.VarChar(80)
+  markdown    String   @db.Text
+  updatedById String?  @db.Char(36) @map("updatedbyid")
+  updatedAt   DateTime @updatedAt @map("updatedat")
+  @@map("portaldocument")
+}
+
+// Email + password login (replaces Privy in this deployment)
+model LocalCredential {
+  email        String   @id @db.VarChar(255)
+  passwordHash String   @map("passwordhash") @db.VarChar(255)
+  privyDid     String   @unique @map("privydid") @db.VarChar(255)
+  createdAt    DateTime @default(now()) @map("createdat")
+
+  @@map("localcredential")
+}

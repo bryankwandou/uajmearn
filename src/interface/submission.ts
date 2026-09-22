@@ -1,0 +1,68 @@
+import { type SubmissionLabels, type SubmissionStatus } from '@/prisma/enums';
+
+import type {
+  Listing,
+  ProjectApplicationAi,
+  Rewards,
+} from '@/features/listings/types';
+
+import { type User } from './user';
+
+interface SubmissionWithUser {
+  id: string;
+  status: SubmissionStatus;
+  link?: string;
+  tweet?: string;
+  otherInfo?: string;
+  eligibilityAnswers?: any;
+  userId: string;
+  agentId?: string | null;
+  listingId: string;
+  isWinner: boolean;
+  winnerPosition?: keyof Rewards;
+  isPaid: boolean;
+  paymentDetails?: Array<{
+    txId: string;
+    amount: number;
+    tranche: number;
+  }>;
+  rewardInUSD: number;
+  isActive: boolean;
+  isArchived: boolean;
+  createdAt: string;
+  updatedAt: string;
+  like?: any;
+  user: User;
+  listing?: Listing;
+  ask?: number;
+  telegram?: string | null;
+  label: SubmissionLabels;
+  notes?: string;
+  totalEarnings?: number;
+  ai?: ProjectApplicationAi;
+}
+
+interface ListingWinner {
+  id: string;
+  winnerPosition: number | null;
+  user: {
+    id: string;
+    username: string | null;
+    firstName: string | null;
+    lastName: string | null;
+    photo: string | null;
+  };
+}
+
+interface ListingPageSubmission {
+  id: string;
+  link?: string;
+  isWinner: boolean;
+  winnerPosition?: keyof Rewards;
+  like?: unknown;
+  user: Pick<User, 'firstName' | 'lastName' | 'photo' | 'username'> & {
+    id: string;
+  };
+}
+
+export type { ListingPageSubmission, ListingWinner, SubmissionWithUser };
