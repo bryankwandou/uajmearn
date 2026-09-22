@@ -389,7 +389,7 @@ function TalentProfile({ talent, stats, bgIndex, shouldNoIndex }: TalentProps) {
                 <meta name="twitter:description" content={description} />
                 <link
                   rel="canonical"
-                  href={`https://superteam.fun/earn/t/${talent?.username}/`}
+                  href={`https://uajmearn.vercel.app/earn/t/${talent?.username}/`}
                 />
               </>
             )}

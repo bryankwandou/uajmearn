@@ -11,7 +11,7 @@ export function getSiteUrl(): string {
     process.env.SITE_URL ??
     process.env.VERCEL_URL ??
     process.env.NEXT_PUBLIC_VERCEL_URL ??
-    'https://superteam.fun';
+    'https://uajmearn.vercel.app';
 
   const withProtocol = rawUrl.startsWith('http') ? rawUrl : `https://${rawUrl}`;
 

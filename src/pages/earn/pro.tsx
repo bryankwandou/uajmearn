@@ -44,7 +44,7 @@ export default function ProPage({ potentialSession }: HomePageProps) {
           <Meta
             title="UAJM Earn | Work to Earn in Crypto"
             description="Explore the latest bounties on UAJM Earn, offering opportunities in the crypto space across Design, Development, and Content."
-            canonical="https://superteam.fun/earn/pro/"
+            canonical="https://uajmearn.vercel.app/earn/pro/"
             og={ASSET_URL + `/og/pro.png`}
           />
         </>

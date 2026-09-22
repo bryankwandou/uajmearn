@@ -191,7 +191,7 @@ function MainContent({ listing, grant, source }: SourceType) {
         onClick={onListingLinkCopy}
       >
         <span className="truncate font-normal text-slate-500">
-          superteam.fun/earn/{source === 'grant' ? 'grants' : 'listing'}/
+          uajmearn.vercel.app/earn/{source === 'grant' ? 'grants' : 'listing'}/
           {source === 'grant' ? grant?.slug : listing?.slug}
         </span>
         {hasCopied ? (

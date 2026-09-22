@@ -119,7 +119,7 @@ export async function GET(request: Request) {
                   objectFit: 'contain',
                 }}
                 alt="logo"
-                src={'https://superteam.fun/assets/grant-icon.svg'}
+                src={'https://uajmearn.vercel.app/assets/grant-icon.svg'}
                 width="64px"
                 height="64px"
               />

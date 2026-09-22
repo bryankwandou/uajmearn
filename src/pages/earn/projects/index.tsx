@@ -28,7 +28,7 @@ export default function ProjectsPage({ potentialSession }: ProjectsPageProps) {
           <Meta
             title="Crypto Projects & Web3 Jobs | Solana Projects | UAJM Earn"
             description="Find remote crypto projects, web3 jobs, and Solana opportunities. Browse freelance projects, contract work, and full-time positions in blockchain, DeFi, NFTs, and more. Earn crypto for your skills."
-            canonical="https://superteam.fun/earn/projects/"
+            canonical="https://uajmearn.vercel.app/earn/projects/"
             og={ASSET_URL + `/og/og.png`}
           />
           <JsonLd data={[breadcrumbSchema]} />

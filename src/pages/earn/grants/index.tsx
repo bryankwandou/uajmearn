@@ -25,7 +25,7 @@ function Grants() {
         <Meta
           title="Grants | UAJM Earn"
           description="Discover Solana Grants for Development, Art, Content, and more to fund your ideas"
-          canonical="https://superteam.fun/earn/grants/"
+          canonical="https://uajmearn.vercel.app/earn/grants/"
           og={ASSET_URL + `/og/grants.png`}
         />
       }

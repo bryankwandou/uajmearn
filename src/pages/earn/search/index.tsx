@@ -93,7 +93,7 @@ const SearchPage = ({ initialQuery = '' }: SearchProps) => {
                 ? `Search results for "${searchTerm}" on UAJM Earn`
                 : 'Search for bounties, grants, and opportunities on UAJM Earn'
             }
-            canonical="https://superteam.fun/earn/search/"
+            canonical="https://uajmearn.vercel.app/earn/search/"
             og={ASSET_URL + `/og/og.png`}
             noIndex
           />

@@ -69,9 +69,7 @@ export function BannerCarousel({
       setApi={setCarouselApi}
     >
       <CarouselContent>
-        <CarouselItem>
-          <HomeCryptoWorldFairHackathonBanner />
-        </CarouselItem>
+        
         <CarouselItem>
           <HomeTalentBanner totalUsers={totalUsers} />
         </CarouselItem>

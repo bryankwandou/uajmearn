@@ -27,7 +27,7 @@ export default function BountiesPage({ potentialSession }: BountiesPageProps) {
           <Meta
             title="Crypto Bounties | Web3 Bounties | Solana Bounties | UAJM Earn"
             description="Earn crypto by completing bounties. Find web3 bounties, Solana bounties, and crypto tasks in development, design, and content. Get paid in USDC for your skills."
-            canonical="https://superteam.fun/earn/bounties/"
+            canonical="https://uajmearn.vercel.app/earn/bounties/"
             og={ASSET_URL + `/og/og.png`}
           />
           <JsonLd data={[breadcrumbSchema]} />

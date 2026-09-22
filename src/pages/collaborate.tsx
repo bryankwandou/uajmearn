@@ -36,7 +36,7 @@ export default function Collaborate() {
       <Meta
         title="Work with Superteam Campus Club | Access the Best Talent on Solana"
         description="Get access to the best talent on Solana. Superteam Campus Club is the forefront community for web3, powered by Solana."
-        canonical="https://superteam.fun/collaborate/"
+        canonical="https://uajmearn.vercel.app/collaborate/"
         og={`${ASSET_URL}/st/og/og-collaborate.png`}
       />
 

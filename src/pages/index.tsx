@@ -48,7 +48,7 @@ export default function Home({ chapters, chaptersForSchema }: HomePageProps) {
       <Meta
         title="Superteam Campus Club | The Talent Layer of Solana"
         description="Superteam Campus Club is a community of the best talent learning, earning and building in crypto."
-        canonical="https://superteam.fun/"
+        canonical="https://uajmearn.vercel.app/"
         og={`${ASSET_URL}/st/og/og-home.png`}
       />
       <JsonLd data={generateSuperteamChaptersSchema(chaptersForSchema)} />

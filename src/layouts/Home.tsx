@@ -137,7 +137,7 @@ export function Home({
           <Meta
             title="UAJM Earn | Work to Earn in Crypto"
             description="Explore the latest bounties on UAJM Earn, offering opportunities in the crypto space across Design, Development, and Content."
-            canonical="https://superteam.fun/earn"
+            canonical="https://uajmearn.vercel.app/earn"
           />
         )
       }

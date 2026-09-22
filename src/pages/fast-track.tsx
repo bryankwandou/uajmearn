@@ -32,7 +32,7 @@ export default function FastTrack() {
       <Meta
         title="Fast Track | Accelerate Your Solana Idea"
         description="Global Superteam Members can receive perks & personalized support when applying to acceleration & incubation programs."
-        canonical="https://superteam.fun/fast-track/"
+        canonical="https://uajmearn.vercel.app/fast-track/"
         og={`${ASSET_URL}/st/og/og-fast-track.png`}
       />
 

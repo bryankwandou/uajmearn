@@ -312,7 +312,7 @@ export async function getTokenIcon(
     return icon;
   }
 
-  const proxyUrl = new URL(icon, 'https://superteam.fun');
+  const proxyUrl = new URL(icon, 'https://uajmearn.vercel.app');
   proxyUrl.searchParams.set('format', 'png');
   return `${proxyUrl.pathname}${proxyUrl.search}`;
 }

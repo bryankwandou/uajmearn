@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
@@ -33,14 +32,7 @@ export default function Blocked() {
     >
       <div className="mx-auto mt-10 max-w-[800px] px-4">
         <p className="text-center text-3xl font-medium text-slate-600">
-          Your access to Earn has been restricted. Please get in touch with{' '}
-          <Link
-            className="text-brand-purple"
-            href="mailto:support@superteam.fun"
-          >
-            support@superteam.fun
-          </Link>{' '}
-          if you have any questions for more information.
+          Your access to Earn has been restricted.
         </p>
       </div>
     </Default>

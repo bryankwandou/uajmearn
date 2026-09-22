@@ -51,7 +51,7 @@ const CategoryPage = ({
           <Meta
             title={`${categoryName} Opportunities | UAJM Earn`}
             description={categoryDescription}
-            canonical={`https://superteam.fun/earn/category/${slug}/`}
+            canonical={`https://uajmearn.vercel.app/earn/category/${slug}/`}
             og={ogImage.toString()}
           />
           <Head>

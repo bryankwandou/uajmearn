@@ -58,7 +58,7 @@ const Sponsor = () => {
       <Meta
         title="Find Top Talent for Your Crypto Projects on UAJM Earn"
         description="Seeking top talent for your crypto project? UAJM Earn connects you with experts for Bounties, Projects, and Grants in the crypto space."
-        canonical="https://superteam.fun/earn/sponsor/"
+        canonical="https://uajmearn.vercel.app/earn/sponsor/"
         og={ASSET_URL + `/og/sponsor.png`}
       />
       <JsonLd data={[generateOrganizationSchema()]} />

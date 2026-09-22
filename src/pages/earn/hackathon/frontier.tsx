@@ -60,7 +60,7 @@ export default function Frontier({ hackathon }: { hackathon: Hackathon }) {
         <Meta
           title="Frontier | UAJM Earn"
           description="Solana Frontier Online Hackathon"
-          canonical="https://superteam.fun/earn/hackathon/frontier/"
+          canonical="https://uajmearn.vercel.app/earn/hackathon/frontier/"
           og={ASSET_URL + '/hackathon/frontier/og.webp'}
         />
       }

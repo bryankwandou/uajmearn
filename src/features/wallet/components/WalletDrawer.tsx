@@ -254,27 +254,8 @@ export function WalletDrawer({
                 />
               </div>
             )}
-            <p className="sticky bottom-0 mt-auto bg-white px-2 py-2 text-center text-xs text-slate-400 sm:text-sm">
+            {false && (<p className="sticky bottom-0 mt-auto bg-white px-2 py-2 text-center text-xs text-slate-400 sm:text-sm">
               Have questions? Reach out to us at{' '}
               {isMD ? (
                 <CopyButton text="support@superteam.fun">
-                  <p className="underline hover:text-slate-500">
-                    support@superteam.fun
-                  </p>
-                </CopyButton>
-              ) : (
-                <a
-                  href="mailto:support@superteam.fun"
-                  className="underline hover:text-slate-500"
-                  target="_blank"
-                >
-                  support@superteam.fun
-                </a>
-              )}
-            </p>
-          </div>
-        </ScrollArea>
-      </SideDrawerContent>
-    </SideDrawer>
-  );
-}
+                  <p className="underline hover:text-slate-500"

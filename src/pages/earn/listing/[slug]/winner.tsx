@@ -63,7 +63,7 @@ function WinnerBounty({
         name="twitter:title"
         content={`${initialBounty?.title || 'Bounty'} | UAJM Earn`}
       />
-      <meta name="twitter:site" content="https://superteam.fun/earn" />
+      <meta name="twitter:site" content="https://uajmearn.vercel.app/earn" />
       <meta name="twitter:creator" content="@SuperteamEarn" />
       <meta name="twitter:image" content={`${image.toString()}`} />
       <meta name="twitter:card" content="summary_large_image" />

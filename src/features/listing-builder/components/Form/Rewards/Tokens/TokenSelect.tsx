@@ -81,7 +81,7 @@ type TokenSearchResult =
       token: JupiterToken;
     };
 
-const supportEmail = 'support@superteam.fun';
+const supportEmail = '';
 const defaultTokenIcon = '/assets/dollar.svg';
 
 const getJupiterTokenUrl = (mintAddress: string) =>
@@ -161,6 +161,11 @@ function TokenSearchLabel({
 }
 
 function ReachOutMessage({ jupiterUrl }: { jupiterUrl?: string }) {
+  void CopyButton; void Badge; void CopyIcon; void supportEmail; void jupiterUrl;
+  return (
+    <div className="py-8 text-center text-sm">Token not found.</div>
+  );
+  // eslint-disable-next-line no-unreachable
   return (
     <div className="flex flex-col gap-2 py-8 text-center text-sm">
       <p>Please reach out to us to add your token</p>

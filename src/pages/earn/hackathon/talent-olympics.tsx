@@ -180,7 +180,7 @@ export default function TalentOlympics({ countryLeaders, rankings }: Props) {
         <Meta
           title="Talent Olympics | UAJM Earn"
           description="Explore the latest bounties on UAJM Earn, offering opportunities in the crypto space across Design, Development, and Content."
-          canonical="https://superteam.fun/earn/hackathon/talent-olympics/"
+          canonical="https://uajmearn.vercel.app/earn/hackathon/talent-olympics/"
         />
       }
     >

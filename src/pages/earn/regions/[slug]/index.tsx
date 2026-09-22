@@ -62,7 +62,7 @@ const RegionsPage = ({ slug, st, countryData }: RegionsPageProps) => {
             <Meta
               title={`Welcome to UAJM Earn ${displayName} | Discover Bounties and Grants`}
               description={`Welcome to UAJM Earn ${displayName}'s page — Discover bounties and grants and become a part of the global crypto community`}
-              canonical={`https://superteam.fun/earn/regions/${slug}/`}
+              canonical={`https://uajmearn.vercel.app/earn/regions/${slug}/`}
               og={ogImage.toString()}
             />
             <JsonLd data={[organizationSchema, breadcrumbSchema]} />
@@ -108,7 +108,7 @@ const RegionsPage = ({ slug, st, countryData }: RegionsPageProps) => {
             <Meta
               title={`Welcome to UAJM Earn ${countryName} | Discover Bounties and Grants`}
               description={`Welcome to UAJM Earn ${countryName}'s page — Discover bounties and grants and become a part of the global crypto community`}
-              canonical={`https://superteam.fun/earn/regions/${slug}/`}
+              canonical={`https://uajmearn.vercel.app/earn/regions/${slug}/`}
               og={ogImage.toString()}
             />
             <JsonLd data={[organizationSchema, breadcrumbSchema]} />

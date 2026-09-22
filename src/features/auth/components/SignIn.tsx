@@ -119,7 +119,7 @@ export const SignIn = ({
           </Link>{' '}
           and our{' '}
           <Link
-            href={`https://superteam.fun/earn/privacy-policy.pdf`}
+            href={`https://uajmearn.vercel.app/earn/privacy-policy.pdf`}
             className="font-semibold hover:underline"
             target="_blank"
           >
@@ -129,7 +129,7 @@ export const SignIn = ({
         </p>
       </div>
 
-      <div className="rounded-b-md bg-slate-100 py-[7px]">
+      {false && (<div className="rounded-b-md bg-slate-100 py-[7px]">
         <p className="text-center text-xs text-slate-400">
           Need help? Reach out to us at{' '}
           {isMD ? (
@@ -139,21 +139,4 @@ export const SignIn = ({
                 className: 'px-1.5 py-0.5 text-[0.6875rem]',
               }}
             >
-              <p className="underline hover:text-slate-500">
-                support@superteam.fun
-              </p>
-            </CopyButton>
-          ) : (
-            <a
-              href="mailto:support@superteam.fun"
-              className="underline hover:text-slate-500"
-              target="_blank"
-            >
-              support@superteam.fun
-            </a>
-          )}
-        </p>
-      </div>
-    </div>
-  );
-};
+              <p className="underline hover:text-slate-500"

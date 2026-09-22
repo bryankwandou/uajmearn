@@ -85,7 +85,7 @@ export default function Breakout({ hackathon }: { hackathon: Hackathon }) {
           <Meta
             title="Breakout | UAJM Earn"
             description={`Solana Breakout Online Hackathon`}
-            canonical="https://superteam.fun/earn/hackathon/breakout/"
+            canonical="https://uajmearn.vercel.app/earn/hackathon/breakout/"
             og="https://res.cloudinary.com/dgvnuwspr/image/upload/assets/hackathon/breakout/og-image.png"
           />
         </>

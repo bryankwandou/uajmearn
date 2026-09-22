@@ -261,7 +261,7 @@ export async function GET(request: Request) {
                   objectFit: 'contain',
                 }}
                 alt="logo"
-                src={`https://superteam.fun/assets/${listingIcon}`}
+                src={`https://uajmearn.vercel.app/assets/${listingIcon}`}
                 width="64px"
                 height="64px"
               />

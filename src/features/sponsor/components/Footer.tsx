@@ -67,7 +67,6 @@ export const Footer = () => {
       text: 'Rate Card',
       href: 'https://docs.google.com/spreadsheets/d/18Pahc-_9WhXezz7DW2kjwE1Iu-ExbOFtoxlPPsavsvg/edit?gid=0#gid=0',
     },
-    { text: 'Contact Us', supportForm: true },
   ];
 
   const opportunities: FooterLink[] = [
@@ -165,11 +164,11 @@ export const Footer = () => {
               <button
                 className="text-slate-100 transition-opacity hover:text-white"
                 onClick={() => {
-                  window.open('mailto:support@superteam.fun', '_blank');
+                  window.open('#', '_blank');
                 }}
                 aria-label="Email"
               >
-                <MdOutlineMail className="size-5" />
+                {false && (<MdOutlineMail className="size-5" />)}
               </button>
               <Twitter
                 link="https://twitter.com/superteamearn"

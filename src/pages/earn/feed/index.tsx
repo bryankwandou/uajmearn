@@ -21,7 +21,7 @@ export default function FeedPage({ id, type }: Props) {
         <Meta
           title="Activity Feed | UAJM Earn"
           description="Discover the best work on Earn. Browse popular submissions, recent activity, and winning entries from the Superteam Campus Club community."
-          canonical="https://superteam.fun/earn/feed/"
+          canonical="https://uajmearn.vercel.app/earn/feed/"
           og={ASSET_URL + `/og/og.png`}
           noIndex
         />

@@ -100,7 +100,7 @@ function App({ Component, pageProps }: AppProps) {
               key="icon-png"
             />
           </Head>
-          {router.pathname === '/' && (
+          {false && (
             <div className="w-full bg-slate-950 text-white">
               <div className="mx-auto flex max-w-7xl items-center justify-center px-4 py-2 text-center text-xs font-medium sm:text-sm">
                 <a

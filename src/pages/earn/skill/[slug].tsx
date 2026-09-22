@@ -60,7 +60,7 @@ const SkillPage = ({
           <Meta
             title={`${skillName} Opportunities | UAJM Earn`}
             description={description}
-            canonical={`https://superteam.fun/earn/skill/${slug}/`}
+            canonical={`https://uajmearn.vercel.app/earn/skill/${slug}/`}
             og={ogImage.toString()}
           />
           <Head>

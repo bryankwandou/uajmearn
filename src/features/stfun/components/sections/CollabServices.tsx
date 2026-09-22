@@ -19,7 +19,7 @@ export default function CollabServices() {
           subheading="projects for the community"
           content="Sponsor or participate in small tasks and projects in the Solana ecosystem."
           btnText="Learn more"
-          btnLink="https://superteam.fun/earn"
+          btnLink="https://uajmearn.vercel.app/earn"
         />
         <Accordion
           image={`${ASSET_URL}/st/images/grant_new.png`}
@@ -27,7 +27,7 @@ export default function CollabServices() {
           subheading="fast grants to incentivize builders"
           content="Fund or apply for small grants to get started any projects — code, content or community for the Solana ecosystem. You might just make the next moonshot!"
           btnText="Learn more"
-          btnLink="https://superteam.fun/earn/grants/"
+          btnLink="https://uajmearn.vercel.app/earn/grants/"
         />
         <Accordion
           image={`${ASSET_URL}/st/images/grant_new.png`}
@@ -43,7 +43,7 @@ export default function CollabServices() {
           subheading="unlock new markets with our communities"
           content="Work with contributors to create larger programs with a combination of all of the above to open whole new markets and create a new ecosystem from scratch."
           btnText="Reach out"
-          btnLink="mailto:support@superteam.fun?subject=Working%20with%20Superteam&body=Hello,%20I%20wanted%20to%20explore%20the%20possibility%20of%20us%20working%20together."
+          btnLink="#"
         />
       </div>
     </div>

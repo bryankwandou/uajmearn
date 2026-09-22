@@ -28,7 +28,7 @@ export default function MemberPerks({
       <Meta
         title="Member Perks | Exclusive Benefits for Superteam Members"
         description="Being a Superteam Campus Club member comes with many perks. Explore exclusive perks available to members around the world."
-        canonical="https://superteam.fun/member-perks/"
+        canonical="https://uajmearn.vercel.app/member-perks/"
         og={`${ASSET_URL}/st/og/og-member-perks.png`}
       />
 

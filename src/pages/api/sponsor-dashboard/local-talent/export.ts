@@ -168,7 +168,7 @@ async function handler(req: NextApiRequestWithSponsor, res: NextApiResponse) {
         Rank: user.rank,
         Name: `${user.firstName} ${user.lastName}`,
         'Email ID': user.email,
-        'Profile Link': `https://superteam.fun/earn/t/${user.username}`,
+        'Profile Link': `https://uajmearn.vercel.app/earn/t/${user.username}`,
         Wins: user.wins,
         Submissions: user.totalSubmissions,
         'Total Earnings': `$${user.totalEarnings.toLocaleString('en-us', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`,

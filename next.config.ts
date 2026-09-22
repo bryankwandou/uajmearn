@@ -162,6 +162,23 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      { source: '/earn/pro', destination: '/earn', permanent: false },
+      { source: '/earn/hackathon/breakout', destination: '/earn', permanent: false },
+      { source: '/earn/hackathon/crypto-worlds-fair', destination: '/earn', permanent: false },
+      { source: '/earn/hackathon/cypherpunk', destination: '/earn', permanent: false },
+      { source: '/earn/hackathon/frontier', destination: '/earn', permanent: false },
+      { source: '/earn/hackathon/mobius', destination: '/earn', permanent: false },
+      { source: '/earn/hackathon/radar', destination: '/earn', permanent: false },
+      { source: '/earn/hackathon/redacted', destination: '/earn', permanent: false },
+      { source: '/earn/hackathon/renaissance', destination: '/earn', permanent: false },
+      { source: '/earn/hackathon/scribes', destination: '/earn', permanent: false },
+      { source: '/earn/hackathon/talent-olympics', destination: '/earn', permanent: false },
+      { source: '/earn/hackathon/world-cup', destination: '/earn', permanent: false },
+      { source: '/earn/agents/:path*', destination: '/earn', permanent: false },
+      { source: '/earn/feed/:path*', destination: '/earn', permanent: false },
+      { source: '/earn/leaderboard', destination: '/earn', permanent: false },
+      { source: '/member-perks', destination: '/earn', permanent: false },
+      { source: '/fast-track', destination: '/earn', permanent: false },
       {
         source: '/earn/api/email/unsubscribe/:path*',
         destination: '/api/email/unsubscribe/:path*',

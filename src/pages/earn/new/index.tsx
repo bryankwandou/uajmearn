@@ -91,7 +91,7 @@ export default function NewProfilePage({
         <Meta
           title="Make Your Profile | Earn on Superteam Campus Club | Connect with Crypto Talent"
           description="Join Superteam Campus Club to engage with top talent and discover bounties and grants for your crypto projects."
-          canonical="https://superteam.fun/earn/new/"
+          canonical="https://uajmearn.vercel.app/earn/new/"
         />
       }
     >

@@ -144,7 +144,7 @@ export default function Production() {
                   'End-to-end bounty management',
                 ],
                 btnText: 'Start Earning',
-                btnLink: 'https://superteam.fun/earn',
+                btnLink: 'https://uajmearn.vercel.app/earn',
               })
             }
           />
@@ -170,7 +170,7 @@ export default function Production() {
                   'paid out every week',
                 ],
                 btnText: 'Apply now!',
-                btnLink: 'https://superteam.fun/earn/grants/',
+                btnLink: 'https://uajmearn.vercel.app/earn/grants/',
               })
             }
           />

@@ -299,7 +299,7 @@ const CreateSponsor = () => {
         <Meta
           title="Create Sponsor | UAJM Earn"
           description="Every Solana opportunity in one place!"
-          canonical="https://superteam.fun/earn/new/sponsor/"
+          canonical="https://uajmearn.vercel.app/earn/new/sponsor/"
         />
       }
     >

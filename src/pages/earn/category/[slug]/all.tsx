@@ -52,7 +52,7 @@ export default function AllCategoryPage({
           <Meta
             title={`All ${categoryName} Opportunities | UAJM Earn`}
             description={description}
-            canonical={`https://superteam.fun/earn/category/${slug}/all/`}
+            canonical={`https://uajmearn.vercel.app/earn/category/${slug}/all/`}
             og={ogImage.toString()}
           />
           <Head>

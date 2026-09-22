@@ -52,7 +52,7 @@ export function ListingWinners({ bounty }: Props) {
   const openWinnerLink = () => {
     return tweetEmbedLink(
       tweetTemplate(
-        'https://superteam.fun/earn/listing/' + bounty?.slug + '/winner',
+        'https://uajmearn.vercel.app/earn/listing/' + bounty?.slug + '/winner',
       ),
     );
   };

@@ -251,13 +251,7 @@ function MainContent({
                   variant="link"
                   className="h-fit p-0 text-slate-500 underline underline-offset-3"
                 >
-                  <a
-                    href="mailto:support@superteam.fun"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Contact us
-                  </a>
+                  <span />
                 </Button>
               </div>
             </div>

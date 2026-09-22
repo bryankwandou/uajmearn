@@ -22,7 +22,7 @@ export default function Collab() {
         <div className="button mt-[50px]">
           <PrimaryButton
             className="bg-white"
-            href="mailto:support@superteam.fun?subject=Working%20with%20Superteam&body=Hello,%20I%20wanted%20to%20explore%20the%20possibility%20of%20us%20working%20together."
+            href="#"
             target="_blank"
             rel="noopener noreferrer"
           >

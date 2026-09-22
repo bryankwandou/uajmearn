@@ -27,7 +27,7 @@ export default function BookmarksPage() {
         <Meta
           title="Bookmarks | UAJM Earn"
           description="Your bookmarks on UAJM Earn"
-          canonical="https://superteam.fun/earn/bookmarks/"
+          canonical="https://uajmearn.vercel.app/earn/bookmarks/"
         />
       }
     >

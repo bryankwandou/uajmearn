@@ -188,11 +188,11 @@ To verify the transaction, the wallet address must match the winner's, and the t
     subsections: [
       {
         question: "I can't connect my wallet. What should I do?",
-        answer: `Ensure your wallet is supported and unlocked. Try refreshing the page or reconnecting. If the issue persists, contact <a style="color: blue" href="mailto:support@superteam.fun" target="_blank">support@superteam.fun</a>`,
+        answer: ``,
       },
       {
         question: 'I need help with my listing. How can I get in touch?',
-        answer: `Email us at <a style="color: blue" href="mailto:support@superteam.fun" target="_blank">support@superteam.fun</a> and we'll get back to you ASAP.`,
+        answer: `'ll get back to you ASAP.`,
       },
     ],
   },

@@ -39,7 +39,7 @@ export default function Talent() {
         <Meta
           title="Create Your Profile to Access Bounties & Grants | UAJM Earn"
           description="Become part of Superteam Campus Club's talent network, where you can present your skills and collaborate on various crypto bounties, grants, and projects."
-          canonical="https://superteam.fun/earn/new/talent/"
+          canonical="https://uajmearn.vercel.app/earn/new/talent/"
         />
       }
     >

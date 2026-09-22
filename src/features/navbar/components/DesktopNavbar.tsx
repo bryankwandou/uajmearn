@@ -156,36 +156,7 @@ export const DesktopNavbar = ({
               {LISTING_NAV_ITEMS?.map((navItem) => {
                 const isCurrent = `${navItem.href}` === router.asPath;
                 return (
-                  <NavLink
-                    isPro={isPro}
-                    className="ph-no-capture"
-                    onClick={() => {
-                      posthog.capture(navItem.posthog);
-                    }}
-                    key={navItem.label}
-                    href={navItem.href ?? '#'}
-                    label={navItem.label}
-                    isActive={isCurrent}
-                  />
-                );
-              })}
-
-              <NavLink
-                isPro={isPro}
-                className="ph-no-capture"
-                onClick={() => {
-                  posthog.capture('pro_navbar');
-                }}
-                href="/earn/pro"
-                label={
-                  <ProBadge
-                    containerClassName="gap-1 mt-px"
-                    iconClassName="size-4 text-zinc-600"
-                    textClassName="text-xs font-medium text-slate-600"
-                  />
-                }
-                isActive={router.pathname === '/earn/pro'}
-              />
+                  
 
               {HACKATHONS.map((hackathon) => (
                 <Link

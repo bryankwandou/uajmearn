@@ -154,7 +154,6 @@ export const Footer = () => {
   const opportunities = [
     { text: 'Bounties', href: '/earn/bounties' },
     { text: 'Projects', href: '/earn/projects' },
-    { text: 'Jobs', href: '/earn/jobs' },
     { text: 'Grants', href: '/earn/grants' },
   ];
 
@@ -166,17 +165,8 @@ export const Footer = () => {
   ];
 
   const about = [
-    {
-      text: 'FAQ',
-      href: 'https://superteamdao.notion.site/Superteam-Earn-FAQ-aedaa039b25741b1861167d68aa880b1?pvs=4',
-    },
     { text: 'Terms', href: '/earn/terms-of-use.pdf' },
     { text: 'Privacy Policy', href: '/earn/privacy-policy.pdf' },
-    {
-      text: 'Changelog',
-      href: 'https://superteamdao.notion.site/Superteam-Earn-Changelog-faf0c85972a742699ecc07a52b569827',
-    },
-    { text: 'Contact Us', supportForm: true },
   ];
 
   return (
@@ -197,20 +187,13 @@ export const Footer = () => {
               single profile.
             </p>
             <div className="flex items-center gap-4">
-              <GitHub
-                link="https://github.com/SuperteamDAO/earn"
-                className="text-slate-500"
-              />
-              <Twitter
-                link="https://twitter.com/superteamearn"
-                className="text-slate-500"
-              />
-              <MdOutlineMail
+              
+              {false && (<MdOutlineMail
                 className="'transition-opacity size-5 cursor-pointer text-slate-500 opacity-100 grayscale duration-200 hover:opacity-80"
                 onClick={() => {
-                  window.open('mailto:support@superteam.fun', '_blank');
+                  window.open('#', '_blank');
                 }}
-              />
+              />)}
             </div>
 
             <div>
@@ -232,7 +215,7 @@ export const Footer = () => {
         <div className="mx-auto max-w-7xl px-4">
           <div className="flex flex-col items-start justify-between md:flex-row md:items-center">
             <p className="mb-4 text-sm text-slate-500 md:mb-0">
-              © {currentYear} Superteam. All rights reserved.
+              © {currentYear} Superteam Campus Club UAJM. All rights reserved.
             </p>
             <div className="flex flex-col items-start gap-4 md:flex-row md:items-center md:gap-6">
               <div className="flex items-center">

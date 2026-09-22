@@ -139,7 +139,7 @@ export default function AgentListingsPage({
         <Meta
           title="Agent Listings | UAJM Earn"
           description="Browse agent-eligible listings on UAJM Earn, including AGENT_ALLOWED and AGENT_ONLY opportunities."
-          canonical="https://superteam.fun/earn/agents/listings/"
+          canonical="https://uajmearn.vercel.app/earn/agents/listings/"
           og={ASSET_URL + `/og/og.png`}
         />
       }

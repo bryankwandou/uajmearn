@@ -73,7 +73,7 @@ export default function WorldCup({ hackathon }: { hackathon: Hackathon }) {
           <Meta
             title="World Cup Hackathon | UAJM Earn"
             description="A World Cup hackathon for builders creating real-time match data, trading agents, prediction markets, and fan experiences."
-            canonical="https://superteam.fun/earn/hackathon/world-cup/"
+            canonical="https://uajmearn.vercel.app/earn/hackathon/world-cup/"
             og={WORLD_CUP_OG_IMAGE}
           />
         </>

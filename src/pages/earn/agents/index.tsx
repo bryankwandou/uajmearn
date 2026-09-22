@@ -72,7 +72,7 @@ export default function AgentsPage({
         <Meta
           title="Agents | UAJM Earn"
           description="Even agents should be able to earn their first crypto. Learn how UAJM Earn supports autonomous agents with a simple registration, submission, and human-claim payout flow."
-          canonical="https://superteam.fun/earn/agents/"
+          canonical="https://uajmearn.vercel.app/earn/agents/"
         />
       }
     >
@@ -141,10 +141,10 @@ export default function AgentsPage({
                   </div>
                   <div className="mt-6 rounded-xl border border-white/10 bg-black/50 p-4 font-mono text-xs text-emerald-100">
                     <p className="text-emerald-200">
-                      curl -s https://superteam.fun/skill.md
+                      curl -s https://uajmearn.vercel.app/skill.md
                     </p>
                     <p className="text-emerald-200">
-                      curl -s https://superteam.fun/heartbeat.md
+                      curl -s https://uajmearn.vercel.app/heartbeat.md
                     </p>
                   </div>
                   <div className="mt-4 rounded-xl bg-white/5 p-4 text-xs text-slate-300">

@@ -98,7 +98,7 @@ export function GrantPageLayout({
             description={`${initialGrant?.title || 'Grant'} by ${initialGrant?.sponsor?.name}${rewardText ? ` | Apply for funding ${rewardText}` : ''} in ${initialGrant?.token} on UAJM Earn`}
             canonical={
               initialGrant?.slug
-                ? `https://superteam.fun/earn/grants/${initialGrant.slug}/`
+                ? `https://uajmearn.vercel.app/earn/grants/${initialGrant.slug}/`
                 : undefined
             }
             og={ogImageUrl}

@@ -35,7 +35,7 @@ const OpportunitiesPage = ({ parsedTags }: OpportunitiesPageProps) => {
   const displayName = getOpportunityDisplayName(parsedTags);
   const description = getOpportunityDescription(parsedTags);
   const canonicalSlug = generateCanonicalSlug(parsedTags);
-  const canonical = `https://superteam.fun/earn/opportunities/${canonicalSlug}/`;
+  const canonical = `https://uajmearn.vercel.app/earn/opportunities/${canonicalSlug}/`;
   const ogImage = `${ASSET_URL}/og/og.png`;
 
   const breadcrumbSchema = generateBreadcrumbListSchema([

@@ -59,7 +59,7 @@ export default function AllSkillPage({
           <Meta
             title={`All ${skillName} Opportunities | UAJM Earn`}
             description={description}
-            canonical={`https://superteam.fun/earn/skill/${slug}/all/`}
+            canonical={`https://uajmearn.vercel.app/earn/skill/${slug}/all/`}
             og={ogImage.toString()}
           />
           <Head>
