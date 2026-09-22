@@ -1,6 +1,6 @@
 import { randomUUID } from 'crypto';
 
-import { redis } from './redis';
+import { hasRedis, redis } from './redis';
 
 interface RedisLockOptions {
   readonly ttlSeconds?: number;
@@ -18,6 +18,7 @@ export async function withRedisLock<TResult>(
   callback: () => Promise<TResult>,
   options?: RedisLockOptions,
 ): Promise<TResult> {
+  if (!hasRedis) return callback();
   const ttlSeconds = options?.ttlSeconds ?? 300;
   const token = randomUUID();
   const acquired = await redis.set(key, token, { nx: true, ex: ttlSeconds });

@@ -3,6 +3,7 @@ import { type NextApiResponse } from 'next';
 import { NextResponse } from 'next/server';
 
 import logger from '@/lib/logger';
+import { hasRedis } from '@/lib/redis';
 import { safeStringify } from '@/utils/safeStringify';
 
 interface ApplyRateLimitOptions {
@@ -34,6 +35,7 @@ async function checkRateLimit(
   options: ApplyRateLimitOptions,
 ): Promise<RateLimitCheckResult> {
   const { limiter, identifier, routeName } = options;
+  if (!hasRedis) return { allowed: true };
 
   if (!identifier) {
     logger.warn(
