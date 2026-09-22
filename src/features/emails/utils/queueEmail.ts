@@ -41,8 +41,15 @@ interface EmailNotificationParams {
   delay?: number;
 }
 
-const redis = new Redis(process.env.REDIS_URL!, { maxRetriesPerRequest: null });
-const logicQueue = new Queue('logicQueue', { connection: redis });
+// Queues need a Redis worker; without REDIS_URL jobs are logged and dropped.
+let logicQueue: Queue | null = null;
+function getQueue() {
+  if (!process.env.REDIS_URL) return null;
+  logicQueue ??= new Queue('logicQueue', {
+    connection: new Redis(process.env.REDIS_URL, { maxRetriesPerRequest: null }),
+  });
+  return logicQueue;
+}
 
 export async function queueEmail({
   type,
@@ -57,7 +64,12 @@ export async function queueEmail({
   );
 
   try {
-    const job = await logicQueue.add(
+    const queue = getQueue();
+    if (!queue) {
+      logger.warn(`Queue disabled, skipping job type=${type}`);
+      return;
+    }
+    const job = await queue.add(
       'processLogic',
       {
         type,
