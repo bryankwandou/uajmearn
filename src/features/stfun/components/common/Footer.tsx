@@ -16,7 +16,7 @@ export default function Footer() {
             />
           </div>
           <div className="absolute -mt-[80px] md:-mt-[140px] lg:mt-0 lg:ml-[27px]">
-            <p className="overlay-text">superteam</p>
+            <p className="overlay-text">Superteam Campus Club</p>
           </div>
         </div>
         <div className="footer-texts mt-[64px] ml-[40px] flex flex-col pb-10 text-white md:flex-row lg:mt-0 lg:mr-[72px] lg:ml-0 lg:text-right">

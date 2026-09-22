@@ -163,7 +163,7 @@ export const SponsorVerificationForm = () => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="mb-1 text-slate-500" isRequired>
-                        Which Superteam are you associated with?
+                        Which Superteam Campus Club are you associated with?
                       </FormLabel>
                       <FormControl>
                         <SuperteamCombobox
@@ -171,7 +171,7 @@ export const SponsorVerificationForm = () => {
                           onChange={(value) => {
                             field.onChange(value || '');
                           }}
-                          placeholder="Select a Superteam"
+                          placeholder="Select a Superteam Campus Club"
                           className="w-full"
                           classNames={{
                             popoverContent:
@@ -191,7 +191,7 @@ export const SponsorVerificationForm = () => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="mb-1 text-slate-500" isRequired>
-                        Is there a Superteam lead that can vouch for you?
+                        Is there a Superteam Campus Club lead that can vouch for you?
                       </FormLabel>
                       <FormControl>
                         {hasNoAssociation ? (
@@ -203,7 +203,7 @@ export const SponsorVerificationForm = () => {
                         ) : !selectedChapter ? (
                           <Input
                             disabled
-                            placeholder="Select a Superteam first"
+                            placeholder="Select a Superteam Campus Club first"
                             value=""
                           />
                         ) : isLoadingCoreMembers ? (
@@ -215,7 +215,7 @@ export const SponsorVerificationForm = () => {
                         ) : coreMembers.length === 0 ? (
                           <Input
                             disabled
-                            placeholder="No Leads found for this Superteam"
+                            placeholder="No Leads found for this Superteam Campus Club"
                             value=""
                           />
                         ) : (

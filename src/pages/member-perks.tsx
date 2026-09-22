@@ -27,7 +27,7 @@ export default function MemberPerks({
     <>
       <Meta
         title="Member Perks | Exclusive Benefits for Superteam Members"
-        description="Being a Superteam member comes with many perks. Explore exclusive perks available to members around the world."
+        description="Being a Superteam Campus Club member comes with many perks. Explore exclusive perks available to members around the world."
         canonical="https://superteam.fun/member-perks/"
         og={`${ASSET_URL}/st/og/og-member-perks.png`}
       />
@@ -50,7 +50,7 @@ export default function MemberPerks({
         <HeroContainer
           line1="Exclusive Perks"
           line2="for Members"
-          line3="being a superteam member comes with many perks,"
+          line3="being a Superteam Campus Club member comes with many perks,"
           line4="check them out below."
           buttonVisible={false}
         />

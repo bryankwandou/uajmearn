@@ -284,7 +284,7 @@ export const createListingFormSchema = ({
           },
           {
             message:
-              'Foundation paying can only be enabled for Superteam listings',
+              'Foundation paying can only be enabled for Superteam Campus Club listings',
           },
         ),
       isPrivate: z.boolean().default(false),

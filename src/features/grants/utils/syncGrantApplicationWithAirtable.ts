@@ -53,7 +53,7 @@ export async function syncGrantApplicationWithAirtable(
       userLocation: user.location,
       determinedRegionName: regionName,
     },
-    `Superteam lookup result for Application ID: ${applicationId}. Region: ${regionName}`,
+    `Superteam Campus Club lookup result for Application ID: ${applicationId}. Region: ${regionName}`,
   );
   logger.info(
     { applicationId, regionName },

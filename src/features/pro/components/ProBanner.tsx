@@ -57,7 +57,7 @@ const NotProUser = ({ totalEarnings }: { totalEarnings: number }) => {
         {(1000 - totalEarnings).toLocaleString('en-US', {
           maximumFractionDigits: 0,
         })}{' '}
-        more, or become a Superteam member
+        more, or become a Superteam Campus Club member
       </p>
       <div className="mt-5 flex items-center gap-4">
         <Progress

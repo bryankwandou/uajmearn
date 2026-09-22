@@ -20,7 +20,7 @@ export default function FeedPage({ id, type }: Props) {
       meta={
         <Meta
           title="Activity Feed | UAJM Earn"
-          description="Discover the best work on Earn. Browse popular submissions, recent activity, and winning entries from the Superteam community."
+          description="Discover the best work on Earn. Browse popular submissions, recent activity, and winning entries from the Superteam Campus Club community."
           canonical="https://superteam.fun/earn/feed/"
           og={ASSET_URL + `/og/og.png`}
           noIndex

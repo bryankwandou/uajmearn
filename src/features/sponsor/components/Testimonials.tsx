@@ -212,7 +212,7 @@ export function Testimonials() {
             logo={`${SPONSOR_LOGO_BASE}/helius.webp`}
             logoAlt="Helius"
             quote={
-              'Running a hackathon without Superteam is nearly impossible. Earn gave us everything we needed to operate and they provided us with first-class support.'
+              'Running a hackathon without Superteam Campus Club is nearly impossible. Earn gave us everything we needed to operate and they provided us with first-class support.'
             }
             metrics={{ views: '250k+', submissions: '200+' }}
             personName="Brady"

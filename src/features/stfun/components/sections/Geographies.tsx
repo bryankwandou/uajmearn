@@ -23,11 +23,11 @@ export default function Geographies({ chapters }: GeographiesProps) {
         id="superteam-locations-heading"
         className="partners-text section-heading font-secondary mb-10 text-center text-[24px] leading-[22px] font-bold text-white md:mb-10 md:text-[32px] lg:leading-[26px]"
       >
-        Find Your Nearest Superteam
+        Find Your Nearest Superteam Campus Club
       </h2>
 
       <p className="sr-only">
-        Discover Superteam chapters worldwide - Solana and Web3 talent
+        Discover Superteam Campus Club chapters worldwide - Solana and Web3 talent
         communities. Find crypto bounties, blockchain jobs, and grants in your
         region.
       </p>
@@ -35,7 +35,7 @@ export default function Geographies({ chapters }: GeographiesProps) {
       <div className="col-span-5">
         <div className="mx-auto mt-10 max-w-[1200px] px-2">
           <ul
-            aria-label="Superteam regional chapters"
+            aria-label="Superteam Campus Club regional chapters"
             className="flex flex-wrap justify-center gap-2.5 md:gap-3"
           >
             {chapters.map((superteam) => {

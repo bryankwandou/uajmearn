@@ -34,8 +34,8 @@ export default function Collaborate() {
   return (
     <>
       <Meta
-        title="Work with Superteam | Access the Best Talent on Solana"
-        description="Get access to the best talent on Solana. Superteam is the forefront community for web3, powered by Solana."
+        title="Work with Superteam Campus Club | Access the Best Talent on Solana"
+        description="Get access to the best talent on Solana. Superteam Campus Club is the forefront community for web3, powered by Solana."
         canonical="https://superteam.fun/collaborate/"
         og={`${ASSET_URL}/st/og/og-collaborate.png`}
       />
@@ -45,7 +45,7 @@ export default function Collaborate() {
           <HeroContainer
             line1="get access to"
             line2="the best talent on Solana"
-            line3="superteam is the forefront community for web3,"
+            line3="Superteam Campus Club is the forefront community for web3,"
             line4="powered by solana."
             buttonVisible={false}
           />

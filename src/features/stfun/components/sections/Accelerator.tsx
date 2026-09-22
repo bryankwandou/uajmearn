@@ -63,7 +63,7 @@ const partners1 = [
       'A leading web3 accelerator, with 300+ portfolio companies & supporting founders 360°.',
     url: 'https://www.outlierventures.io/base-camp/',
     perks:
-      'When applying comment "Superteam" in the referral section at the end of your application to get direct exposure to the Outlier investment team and receive an expedient review on your submission.',
+      'When applying comment "Superteam Campus Club" in the referral section at the end of your application to get direct exposure to the Outlier investment team and receive an expedient review on your submission.',
     duration: '12 weeks',
     funding: 'upto $200k',
     type: 'Virtual',
@@ -90,7 +90,7 @@ const partners2 = [
       'The Solana Incubator is an in-person 3 month program where founders can build their companies alongside Solana Labs.',
     url: 'https://incubator.solanalabs.com/',
     perks:
-      'Get invited to a special Zoom call to learn more about the application process and ways to maximize your chances of acceptance. Also, chance to get referred in by a Superteam lead!',
+      'Get invited to a special Zoom call to learn more about the application process and ways to maximize your chances of acceptance. Also, chance to get referred in by a Superteam Campus Club lead!',
     duration: '3 months',
     funding: '-',
     type: 'In-Person',
@@ -125,7 +125,7 @@ const partners2 = [
     description: 'A bespoke Web3 accelerator where builders back builders.',
     url: 'https://kompass.vc/',
     perks:
-      "Prioritized application process and expdited review of your submission. Please mention 'Superteam' as the referrer.",
+      "Prioritized application process and expdited review of your submission. Please mention 'Superteam Campus Club' as the referrer.",
     duration: '6 months, remote',
     funding: '$125k',
     type: 'Virtual',
@@ -166,9 +166,9 @@ export default function Accelerator() {
             Ecosystem Partners
           </p>
           <p className="accelerator-description mb-[3.75rem] text-center text-lg leading-[160%] text-white">
-            When applying to any program, let your local Superteam lead know.
+            When applying to any program, let your local Superteam Campus Club lead know.
             This allows <br className="hidden md:block" />
-            Superteam to individually support you in getting into an
+            Superteam Campus Club to individually support you in getting into an
             acceleration program.
           </p>
           <div className="flex w-full min-w-0 flex-col items-center justify-center gap-6">

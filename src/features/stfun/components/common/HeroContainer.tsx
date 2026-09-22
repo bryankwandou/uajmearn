@@ -20,7 +20,7 @@ interface HeroContainerProps {
 export default function HeroContainer({
   line1 = '',
   line2 = '',
-  line3 = 'superteam is the forefront community for web3,',
+  line3 = 'Superteam Campus Club is the forefront community for web3,',
   line4 = 'powered by solana.',
   buttonVisible = true,
   children,

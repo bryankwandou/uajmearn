@@ -366,7 +366,7 @@ function TalentProfile({ talent, stats, bgIndex, shouldNoIndex }: TalentProps) {
               content={
                 isPublicProfile
                   ? `${talent?.firstName} ${talent?.lastName} - Talent profile on UAJM Earn`
-                  : 'Talent on Superteam'
+                  : 'Talent on Superteam Campus Club'
               }
             />
             <meta property="og:type" content="profile" />

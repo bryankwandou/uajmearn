@@ -18,8 +18,8 @@ export default function Branding() {
   return (
     <>
       <Meta
-        title="Brand Guidelines | Superteam"
-        description="Superteam brand guidelines: logo, colors, typography, and usage rules."
+        title="Brand Guidelines | Superteam Campus Club"
+        description="Superteam Campus Club brand guidelines: logo, colors, typography, and usage rules."
       />
 
       <div className="col-span-5">
@@ -93,7 +93,7 @@ export default function Branding() {
                 id="colors"
               />
               <p className="font-secondary mb-8 max-w-xl text-sm leading-relaxed text-white/70">
-                The Superteam logo is primarily used in yellow against the
+                The Superteam Campus Club logo is primarily used in yellow against the
                 purple background or vice versa. Otherwise it can be used in
                 black, yellow or purple in white backgrounds but only in white
                 on black backgrounds.
@@ -123,7 +123,7 @@ export default function Branding() {
                 id="palette"
               />
               <p className="font-secondary mb-8 max-w-xl text-sm leading-relaxed text-white/70">
-                The colour palette of Superteam is set to a theme of Super
+                The colour palette of Superteam Campus Club is set to a theme of Super
                 Purple and Super Yellow. Purple connoting the Solana ecosystem
                 works as a background both conceptually and literally for
                 Superteam.
@@ -155,7 +155,7 @@ export default function Branding() {
                 id="typography"
               />
               <p className="font-secondary mb-8 max-w-xl text-sm leading-relaxed text-white/70">
-                The chosen typeface for Superteam is Archivo Semi Expanded, in
+                The chosen typeface for Superteam Campus Club is Archivo Semi Expanded, in
                 various weights. The hierarchy is intuitive and is expanded upon
                 for the website.
               </p>

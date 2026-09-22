@@ -274,7 +274,7 @@ export const ST_GRANT_COPY: {
   application: {
     title: 'Event Grant Application',
     subtitle:
-      "If you're looking to host an event that will help Solana's or Superteam's ecosystem grow, apply with your proposal here and we'll respond soon!",
+      "If you're looking to host an event that will help Solana's or Superteam Campus Club's ecosystem grow, apply with your proposal here and we'll respond soon!",
     projectTitle: {
       label: 'Event Title',
       description: "What's the name of the event you're planning to host?",
@@ -304,7 +304,7 @@ export const ST_GRANT_COPY: {
     projectDetails: {
       label: 'Event Details',
       description:
-        'Include event format, attendee profile, and how it brings the Solana / Superteam community closer together.',
+        'Include event format, attendee profile, and how it brings the Solana / Superteam Campus Club community closer together.',
       placeholder:
         'Describe your event format, target audience, and community impact',
     },

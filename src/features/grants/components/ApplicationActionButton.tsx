@@ -268,7 +268,7 @@ export const ApplicationActionButton = ({
             <p className="mx-auto w-full rounded-md bg-gray-50 px-2 py-2 text-center text-xs text-slate-600 md:text-xs">
               {isST ? (
                 <>
-                  You need to be a <strong>Superteam member</strong> to be able
+                  You need to be a <strong>Superteam Campus Club member</strong> to be able
                   to apply for this grant
                 </>
               ) : (

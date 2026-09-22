@@ -33,7 +33,7 @@ export const TYPOGRAPHY = {
     weight: 'Medium',
     weightNum: 500,
     sample:
-      'At Superteam, we help the most promising projects in the Solana ecosystem in the ascending world launch and grow.',
+      'At Superteam Campus Club, we help the most promising projects in the Solana ecosystem in the ascending world launch and grow.',
   },
   b2: {
     label: 'B2',

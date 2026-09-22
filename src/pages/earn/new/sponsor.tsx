@@ -577,7 +577,7 @@ const CreateSponsor = () => {
                       className="text-xs text-slate-500"
                     >
                       I understand and acknowledge that this project is built
-                      on, or supports, the Solana blockchain, and that Superteam
+                      on, or supports, the Solana blockchain, and that Superteam Campus Club
                       Earn is a platform exclusively for teams and projects
                       within the Solana ecosystem.
                       <span className="text-red-500">*</span>

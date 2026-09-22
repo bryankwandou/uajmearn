@@ -47,7 +47,7 @@ interface SuperteamComboboxProps {
 
   /**
    * Placeholder text displayed in the combobox.
-   * @default 'Select superteam...'
+   * @default 'Select Superteam Campus Club...'
    */
   placeholder?: string;
 
@@ -91,7 +91,7 @@ interface SuperteamComboboxProps {
 export function SuperteamCombobox({
   value,
   onChange,
-  placeholder = 'Select Superteam',
+  placeholder = 'Select Superteam Campus Club',
   unset,
   showGlobal,
   showNoAssociation,
@@ -177,7 +177,7 @@ export function SuperteamCombobox({
         <Command>
           {isMD && <CommandInput placeholder="Search..." />}
           <CommandList className="scrollbar-visible max-h-[200px] overflow-auto md:max-h-[300px]">
-            <CommandEmpty>No superteam found.</CommandEmpty>
+            <CommandEmpty>No Superteam Campus Club found.</CommandEmpty>
             {!!value && unset && (
               <CommandGroup>
                 <CommandItem
@@ -187,7 +187,7 @@ export function SuperteamCombobox({
                     setOpen(false);
                   }}
                 >
-                  <p className="text-slate-400">Select Superteam</p>
+                  <p className="text-slate-400">Select Superteam Campus Club</p>
                 </CommandItem>
               </CommandGroup>
             )}

@@ -448,7 +448,7 @@ export default function SuperteamMap({
     <div
       ref={containerRef}
       role="img"
-      aria-label="World map highlighting Superteam locations across 20+ countries"
+      aria-label="World map highlighting Superteam Campus Club locations across 20+ countries"
       className="relative -mt-6 flex w-full items-center justify-center overflow-hidden rounded-2xl border-[#3f3f3f]"
     />
   );

@@ -218,7 +218,7 @@ const faqs: { question: string; answer: string }[] = [
   {
     question: 'How are winners paid?',
     answer:
-      'Winners are paid directly by the bounty sponsor. Sponsors have two weeks after the judgment period to remit payments to winners. Winners can receive payments through the wallet connected to their Superteam account, or through an external wallet.',
+      'Winners are paid directly by the bounty sponsor. Sponsors have two weeks after the judgment period to remit payments to winners. Winners can receive payments through the wallet connected to their Superteam Campus Club account, or through an external wallet.',
   },
   {
     question: 'I have questions. Who should I contact?',

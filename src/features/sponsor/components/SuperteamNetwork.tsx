@@ -56,7 +56,7 @@ export function SuperteamNetwork() {
         <div className="relative hidden min-h-[18rem] flex-1 md:block">
           <img
             src={GLOBE_URL}
-            alt="Superteam globe"
+            alt="Superteam Campus Club globe"
             className="pointer-events-none absolute -top-4 -right-12 h-[160%] w-[160%] object-contain opacity-80"
           />
           <SuperteamIcon className="pointer-events-none absolute top-5/8 right-1/8 size-32 -translate-x-1/2 -translate-y-1/2 text-[#45556C] opacity-90" />
@@ -65,7 +65,7 @@ export function SuperteamNetwork() {
         <div className="relative flex h-[12rem] w-full items-center justify-center md:hidden">
           <img
             src={GLOBE_URL}
-            alt="Superteam globe"
+            alt="Superteam Campus Club globe"
             className="pointer-events-none relative top-[10rem] -left-10 h-full w-full scale-250 object-contain"
           />
           <SuperteamIcon className="pointer-events-none absolute top-5/9 left-2/4 size-18 -translate-x-1/2 -translate-y-1/2 text-[#45556C] opacity-90" />

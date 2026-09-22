@@ -46,8 +46,8 @@ export default function Home({ chapters, chaptersForSchema }: HomePageProps) {
   return (
     <>
       <Meta
-        title="Superteam | The Talent Layer of Solana"
-        description="Superteam is a community of the best talent learning, earning and building in crypto."
+        title="Superteam Campus Club | The Talent Layer of Solana"
+        description="Superteam Campus Club is a community of the best talent learning, earning and building in crypto."
         canonical="https://superteam.fun/"
         og={`${ASSET_URL}/st/og/og-home.png`}
       />
@@ -66,7 +66,7 @@ export default function Home({ chapters, chaptersForSchema }: HomePageProps) {
       <Hero
         line1="Join The Talent Layer"
         line2="of Solana"
-        line3="superteam is a community of the best talent learning,"
+        line3="Superteam Campus Club is a community of the best talent learning,"
         line4="earning and building in crypto"
         buttonVisible={false}
       />
