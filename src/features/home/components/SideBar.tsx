@@ -85,7 +85,7 @@ interface FeedSidebarContentProps {
 
 const FeedSidebarContent = ({ recentEarners }: FeedSidebarContentProps) => (
   <>
-    <VibeCard />
+    {false && <VibeCard />}
     {null}
     <LiveListings>
       <SectionHeader title="LIVE LISTINGS" href="/earn" />
@@ -128,7 +128,7 @@ const NonSponsorSidebarContent = ({
   <>
     <div className="flex flex-col gap-4">
       {showSponsorBanner && <SponsorBanner />}
-      {showProIntro && <ProIntro origin="sidebar" />}
+      {showProIntro && false && <ProIntro origin="sidebar" />}
       <TotalStats
         isTotalLoading={isTotalsLoading}
         bountyCount={totals?.count}

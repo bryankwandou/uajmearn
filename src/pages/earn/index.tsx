@@ -15,7 +15,6 @@ import {
   generateWebSiteSchema,
 } from '@/utils/json-ld';
 
-import { ProListingsAnnouncement } from '@/features/announcements/components/ProListingsAnnouncement';
 import { BannerCarousel } from '@/features/home/components/Banner';
 import { SponsorStageBanner } from '@/features/home/components/SponsorStage/SponsorStageBanner';
 import { UserStatsBanner } from '@/features/home/components/UserStatsBanner';
@@ -32,13 +31,6 @@ const HomeSideBar = dynamic(() =>
   import('@/features/home/components/SideBar').then((mod) => mod.HomeSideBar),
 );
 
-const HomepagePop = dynamic(
-  () =>
-    import('@/features/conversion-popups/components/HomepagePop').then(
-      (mod) => mod.HomepagePop,
-    ),
-  { ssr: false },
-);
 
 interface HomePageProps {
   readonly potentialSession: boolean;
@@ -115,8 +107,7 @@ export default function HomePage({
           </div>
         </div>
       </div>
-      <HomepagePop />
-      <ProListingsAnnouncement />
+      
     </Default>
   );
 }
