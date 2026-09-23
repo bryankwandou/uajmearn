@@ -34,7 +34,7 @@ export const DesktopNavbar = () => {
             }}
           >
             <LocalImage
-              className="h-[1.4rem] cursor-pointer object-contain"
+              className="h-10 w-auto cursor-pointer object-contain"
               alt="UAJM Earn"
               src="/assets/logo.svg"
               loading="eager"

@@ -1,7 +1,6 @@
 import {
   Check,
   ChevronDown,
-  CopyIcon,
   Loader2,
   Plus,
   ShieldCheck,
@@ -9,7 +8,6 @@ import {
 import { useEffect, useMemo, useState } from 'react';
 import { toast } from 'sonner';
 
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
   Command,
@@ -18,7 +16,6 @@ import {
   CommandItem,
   CommandList,
 } from '@/components/ui/command';
-import { CopyButton } from '@/components/ui/copy-tooltip';
 import {
   FormControl,
   FormField,
@@ -81,7 +78,6 @@ type TokenSearchResult =
       token: JupiterToken;
     };
 
-const supportEmail = '';
 const defaultTokenIcon = '/assets/dollar.svg';
 
 const getJupiterTokenUrl = (mintAddress: string) =>
@@ -160,49 +156,8 @@ function TokenSearchLabel({
   );
 }
 
-function ReachOutMessage({ jupiterUrl }: { jupiterUrl?: string }) {
-  void CopyButton; void Badge; void CopyIcon; void supportEmail; void jupiterUrl;
-  return (
-    <div className="py-8 text-center text-sm">Token not found.</div>
-  );
-  // eslint-disable-next-line no-unreachable
-  return (
-    <div className="flex flex-col gap-2 py-8 text-center text-sm">
-      <p>Please reach out to us to add your token</p>
-      <p className="mx-auto w-2/3 text-slate-500 sm:text-[0.6875rem]">
-        {`Send us your token's`}{' '}
-        {jupiterUrl ? (
-          <a
-            target="_blank"
-            href={jupiterUrl}
-            className="text-[#1C4CE7] hover:underline"
-          >
-            Jupiter link
-          </a>
-        ) : (
-          'Jupiter link'
-        )}{' '}
-        at
-        <CopyButton
-          text={supportEmail}
-          contentProps={{
-            side: 'left',
-            className: 'text-[0.6875rem] px-2 py-0.5',
-          }}
-          content="Click to copy"
-        >
-          <Badge
-            variant="secondary"
-            className="border-border mx-1 my-0.5 inline-flex cursor-pointer items-center gap-1 px-1 text-slate-500 sm:text-[11px]"
-          >
-            {supportEmail}
-            <CopyIcon className="h-3 w-3" />
-          </Badge>
-        </CopyButton>
-        to get it added.
-      </p>
-    </div>
-  );
+function ReachOutMessage() {
+  return <div className="py-8 text-center text-sm">Token not found.</div>;
 }
 
 export function TokenSelect() {
@@ -255,9 +210,6 @@ export function TokenSelect() {
   );
   const verifiedJupiterTokens = filteredJupiterTokens.filter(
     (token) => token.isVerified,
-  );
-  const unverifiedJupiterToken = filteredJupiterTokens.find(
-    (token) => !token.isVerified,
   );
   const searchResults = useMemo<TokenSearchResult[]>(() => {
     const dbResults: TokenSearchResult[] = filteredTokens.map((token) => ({
@@ -511,15 +463,7 @@ export function TokenSelect() {
                       !isSearchingJupiter &&
                       filteredJupiterTokens.length > 0 &&
                       verifiedJupiterTokens.length === 0 &&
-                      searchResults.length === 0 && (
-                        <ReachOutMessage
-                          jupiterUrl={
-                            unverifiedJupiterToken
-                              ? `https://jup.ag/tokens/${unverifiedJupiterToken.id}`
-                              : 'https://jup.ag/terminal'
-                          }
-                        />
-                      )}
+                      searchResults.length === 0 && <ReachOutMessage />}
                     {shouldSearchJupiter &&
                       !isSearchingJupiter &&
                       filteredJupiterTokens.length === 0 &&

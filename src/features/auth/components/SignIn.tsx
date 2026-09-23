@@ -7,9 +7,7 @@ import { type Dispatch, type SetStateAction, useState } from 'react';
 
 import MdOutlineEmail from '@/components/icons/MdOutlineEmail';
 import { Button } from '@/components/ui/button';
-import { CopyButton } from '@/components/ui/copy-tooltip';
 import { TERMS_OF_USE } from '@/constants/TERMS_OF_USE';
-import { useBreakpoint } from '@/hooks/use-breakpoint';
 
 import { loginEventAtom } from '../atoms';
 import { handleUserCreation } from '../utils/handleUserCreation';
@@ -31,7 +29,6 @@ export const SignIn = ({
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   void isLoading;
-  const isMD = useBreakpoint('md');
   const setLoginEvent = useSetAtom(loginEventAtom);
 
   const { initOAuth } = useLoginWithOAuth({
@@ -119,7 +116,7 @@ export const SignIn = ({
           </Link>{' '}
           and our{' '}
           <Link
-            href={`https://uajmearn.vercel.app/earn/privacy-policy.pdf`}
+            href={`https://superteam.fun/earn/privacy-policy.pdf`}
             className="font-semibold hover:underline"
             target="_blank"
           >
@@ -128,15 +125,6 @@ export const SignIn = ({
           .
         </p>
       </div>
-
-      {false && (<div className="rounded-b-md bg-slate-100 py-[7px]">
-        <p className="text-center text-xs text-slate-400">
-          Need help? Reach out to us at{' '}
-          {isMD ? (
-            <CopyButton
-              text="support@superteam.fun"
-              contentProps={{
-                className: 'px-1.5 py-0.5 text-[0.6875rem]',
-              }}
-            >
-              <p className="underline hover:text-slate-500"
+    </div>
+  );
+};

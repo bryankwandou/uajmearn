@@ -152,7 +152,7 @@ export const MobileNavbar = () => {
           }}
         >
           <LocalImage
-            className="h-[1.3rem] cursor-pointer object-contain"
+            className="h-9 w-auto cursor-pointer object-contain"
             alt="UAJM Earn"
             src="/assets/logo.svg"
             loading="eager"

@@ -18,7 +18,7 @@ function HeaderSkeleton() {
             <LocalImage
               src="/assets/logo.svg"
               alt="UAJM Earn"
-              className="h-[1.4rem] w-auto cursor-pointer object-contain"
+              className="h-10 w-auto cursor-pointer object-contain"
               loading="eager"
             />
             <div className="h-6 w-[1.5px] bg-slate-300" />

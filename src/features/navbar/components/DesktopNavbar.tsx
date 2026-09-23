@@ -19,7 +19,6 @@ import { formatNumberWithSuffix } from '@/utils/formatNumberWithSuffix';
 
 import { CreditIcon } from '@/features/credits/icon/credit';
 import { HACKATHONS } from '@/features/hackathon/constants/hackathons';
-import { ProBadge } from '@/features/pro/components/ProBadge';
 
 import { LISTING_NAV_ITEMS } from '../constants';
 import { LogoContextMenu } from './LogoContextMenu';
@@ -135,7 +134,7 @@ export const DesktopNavbar = ({
               }}
             >
               <LocalImage
-                className="h-[1.4rem] cursor-pointer object-contain"
+                className="h-10 w-auto cursor-pointer object-contain"
                 alt="UAJM Earn"
                 src="/assets/logo.svg"
               />
@@ -156,7 +155,19 @@ export const DesktopNavbar = ({
               {LISTING_NAV_ITEMS?.map((navItem) => {
                 const isCurrent = `${navItem.href}` === router.asPath;
                 return (
-                  
+                  <NavLink
+                    isPro={isPro}
+                    className="ph-no-capture"
+                    onClick={() => {
+                      posthog.capture(navItem.posthog);
+                    }}
+                    key={navItem.label}
+                    href={navItem.href ?? '#'}
+                    label={navItem.label}
+                    isActive={isCurrent}
+                  />
+                );
+              })}
 
               {HACKATHONS.map((hackathon) => (
                 <Link

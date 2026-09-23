@@ -16,7 +16,6 @@ import {
   findCountryBySlug,
   getRegionSlug,
 } from '@/features/listings/utils/region';
-import { GitHub, Twitter } from '@/features/social/components/SocialIcons';
 
 const FooterColumn = ({
   title,
@@ -176,7 +175,7 @@ export const Footer = () => {
           <div className="mb-8 flex max-w-[540px] flex-col md:mb-0">
             <div className="mb-4 flex items-center">
               <LocalImage
-                className="mr-4 h-6"
+                className="mr-4 h-12 w-auto"
                 alt="UAJM Earn"
                 src="/assets/logo.svg"
               />

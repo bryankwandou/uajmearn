@@ -4,7 +4,7 @@ export default function NamedLogo() {
     <img
       src="/assets/logo-white.svg"
       alt="Superteam Campus Club"
-      className="h-7 w-auto"
+      className="h-10 w-auto"
     />
   );
 }

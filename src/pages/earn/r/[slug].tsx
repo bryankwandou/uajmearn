@@ -165,7 +165,7 @@ export default function ReferralLandingPage({
         <LocalImage
           src="/assets/logo.svg"
           alt="UAJM Earn"
-          className="h-[1.4rem] w-auto cursor-pointer object-contain"
+          className="h-10 w-auto cursor-pointer object-contain"
           loading="eager"
         />
       </div>

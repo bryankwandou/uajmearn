@@ -9,7 +9,6 @@ import { Button } from '@/components/ui/button';
 import { CopyButton } from '@/components/ui/copy-tooltip';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { SideDrawer, SideDrawerContent } from '@/components/ui/side-drawer';
-import { useBreakpoint } from '@/hooks/use-breakpoint';
 import { useUser } from '@/store/user';
 import { cn } from '@/utils/cn';
 import { formatNumberWithSuffix } from '@/utils/formatNumberWithSuffix';
@@ -51,7 +50,6 @@ export function WalletDrawer({
   const { user: privyUser } = usePrivy();
   const { showMfaEnrollmentModal } = useMfaEnrollment();
 
-  const isMD = useBreakpoint('md');
 
   const handleBack = () => {
     setView('main');
@@ -254,8 +252,9 @@ export function WalletDrawer({
                 />
               </div>
             )}
-            {false && (<p className="sticky bottom-0 mt-auto bg-white px-2 py-2 text-center text-xs text-slate-400 sm:text-sm">
-              Have questions? Reach out to us at{' '}
-              {isMD ? (
-                <CopyButton text="support@superteam.fun">
-                  <p className="underline hover:text-slate-500"
+          </div>
+        </ScrollArea>
+      </SideDrawerContent>
+    </SideDrawer>
+  );
+}
