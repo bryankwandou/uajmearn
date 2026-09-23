@@ -25,6 +25,10 @@ jobs:
           SOURCE_SHA: ${{ github.sha }}
           SOURCE_BRANCH: ${{ github.ref_name }}
         run: |
+          if [ -z "$DISPATCH_URL" ] || [ -z "$DISPATCH_TOKEN" ]; then
+            echo "::warning::SCHEMA_SYNC_DISPATCH_URL/TOKEN not set; skipping schema sync dispatch"
+            exit 0
+          fi
           payload="$(
             jq -n \
               --arg source_repo "$SOURCE_REPO" \
