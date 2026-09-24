@@ -1,6 +1,7 @@
 name: Notify Schema Sync Orchestrator
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
